@@ -1,0 +1,8 @@
+.round-wrapper{
+    &__questions-board_wrapper{
+        display: flex;
+    }
+    &__questions-board_team{
+        flex: 1;
+    }
+}
