@@ -1,25 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
+import {Navbar} from "./components/navbar/Navbar";
+import {RoundScore} from "./components/roundScore/RoundScore";
+
+const roundsNames = ['Простая игра', ' Двойная игра', 'Тройная игра', 'Игра наоборот', 'Большая игра']
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div className="App">
+            <Navbar roundsNames={ roundsNames }/>
+
+            <main className={'round-wrapper'}>
+                <RoundScore score={ 100 }/>
+                <aside>
+
+                </aside>
+                <body>
+
+                </body>
+                <aside>
+
+                </aside>
+            </main>
+            <footer>
+
+            </footer>
+        </div>
+    );
 }
 
 export default App;
