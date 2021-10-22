@@ -3,9 +3,10 @@
     flex: 3;
     width: 100%;
 
-    &__reply + &__reply{
+    &__reply + &__reply {
         padding-bottom: 5px;
     }
+
     &__reply {
         background-color: yellow;
         display: flex;
@@ -15,7 +16,8 @@
         transition: 0.5s;
 
     }
-    &__reply_answer{
+
+    &__reply_answer {
         font-size: 40px;
         line-height: 50px;
         background-color: red;
@@ -23,19 +25,22 @@
         color: white;
         margin: 0 auto;
         padding: 10px 20px;
-        &_answered{
+
+        &_answered {
             background-color: black;
             color: white;
             width: 100%;
             text-align: initial;
         }
     }
-    &__reply_wrapper{
+
+    &__reply_wrapper {
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
-    &__reply_text{
+
+    &__reply_text {
 
     }
 }

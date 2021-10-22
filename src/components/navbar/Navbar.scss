@@ -5,12 +5,18 @@
     &__tab {
         flex: 1;
         font-size: 18px;
-        line-height: 21px;
+        line-height: 40px;
         font-weight: 700;
-
+        box-sizing: border-box;
+        &_active{
+            background-color: azure;
+            border: 2px solid black;
+        }
     }
+
     &__tab-wrapper {
         list-style-type: none;
         display: flex;
+        margin: 0;
     }
 }

@@ -5,7 +5,7 @@ import {useState} from "react";
 
 const classnameRoot = 'questions-board';
 
-export const QuestionsBoard = () => {
+export const QuestionsBoard = (props) => {
     const correctReplies = ['Ok', 'Привет', 'Поцелуй', ' Воинское приветствие', 'Рожки', 'Рукопожатие'];
     const repliesScores = ['27', '19', '16', ' 13', '10', '5'];
     const [guessedReplies, setGuessedReplies] = useState([]);
@@ -20,6 +20,7 @@ export const QuestionsBoard = () => {
             ...guessedReplies,
             index
         ]);
+        props.setTotalScore(props.totalScore+Number(repliesScores[index]));
     };
 
     return <div className={ classnameRoot }>

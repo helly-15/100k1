@@ -1,8 +1,15 @@
 .round-wrapper{
     &__questions-board_wrapper{
         display: flex;
+        margin-top: 20px;
     }
     &__questions-board_team{
         flex: 1;
+    }
+    &__question-text {
+        color: white;
+        font-size: 40px;
+        font-weight: 700;
+        line-height: 35px;
     }
 }
