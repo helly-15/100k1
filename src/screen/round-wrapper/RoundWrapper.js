@@ -5,6 +5,7 @@ import {useState} from "react";
 import {data} from "../../data";
 
 const classnameRoot = 'round-wrapper';
+
 export const RoundWrapper = (props) => {
     const questionText = data.questions[props.roundNumber].title || 'Большая игра';
      const [totalScore, setTotalScore] = useState(0);

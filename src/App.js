@@ -4,6 +4,7 @@ import {RoundWrapper} from "./screen/round-wrapper/RoundWrapper";
 import {useState} from "react";
 import {BrowserRouter} from "react-router-dom";
 import {data} from "./data";
+import {ModalStarter} from "./modals/modal-starter/ModalStarter";
 
 const roundsNames = ['Простая игра', ' Двойная игра', 'Тройная игра', 'Игра наоборот', 'Большая игра']
 
@@ -11,21 +12,29 @@ const roundsNames = ['Простая игра', ' Двойная игра', 'Т�
 function App() {
     const [roundNumber, setRoundNumber] = useState([0]);
     const [totalScore, setTotalScore] = useState([0]);
+    const [modalShown, setModalShown] = useState(true);
     return (
         <div className="App">
-            <BrowserRouter>
-                <Navbar roundsNames={ roundsNames }
-                        setRoundNumber = {setRoundNumber}
-                        activeRoundNumber = {roundNumber}
-                        correctReplies = {data.questions[roundNumber].correctReplies || ['1', '2', '3', '4', '5', '6']}
-                        repliesScores = {data.questions[roundNumber].repliesScores || ['1', '2', '3', '4', '5', '6']}
-                        setTotalScore = {setTotalScore}
-                        totalScore = {Number(totalScore)}
-                />
+            {modalShown ? <ModalStarter setModalShown = {setModalShown} /> :
+                <BrowserRouter>
+                    <Navbar roundsNames={ roundsNames }
+                            setRoundNumber = {setRoundNumber}
+                            activeRoundNumber = {roundNumber}
+                            correctReplies = {data.questions[roundNumber].correctReplies || ['1', '2', '3', '4', '5', '6']}
+                            repliesScores = {data.questions[roundNumber].repliesScores || ['1', '2', '3', '4', '5', '6']}
+                            setTotalScore = {setTotalScore}
+                            totalScore = {Number(totalScore)}
+                    />
 
-                <RoundWrapper roundNumber = {roundNumber} totalScore = {totalScore} setTotalScore = {setTotalScore}/>
-            </BrowserRouter>
+                    <RoundWrapper roundNumber = {roundNumber} totalScore = {totalScore} setTotalScore = {setTotalScore}/>
+                </BrowserRouter>
+            }
 
+            <button className={ 'button-timer' } onClick={()=>{
+                let introSound = new Audio("/100-k-1-20-seconds.mp3");
+                introSound.play();
+            }
+            }> ⏰</button>
         </div>
     );
 }

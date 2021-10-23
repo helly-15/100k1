@@ -20,9 +20,7 @@ export const QuestionsBoard = (props) => {
             ...guessedReplies,
             index
         ]);
-       // console.log(props.totalScore + Number(repliesScores[index]));
         props.setTotalScore(props.totalScore + Number(repliesScores[index]));
-        //console.log(props.totalScore)
     };
 
     useEffect(() => {
