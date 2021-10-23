@@ -3,10 +3,10 @@ import './MistakesCounter.scss';
 const classnameRoot = 'mistakes-counter';
 const numberOfMistakes = 3;
 
-export const MistakesCounter = () => {
+export const MistakesCounter = (props) => {
     return <div className={ classnameRoot }>
         <div className={ classnameRoot + '__round-icon' }>
-            { 1 }
+            { +props.roundNumber !== 3 ? props.roundNumber + 1 : '?' }
         </div>
 
         { Array.apply(null, Array(numberOfMistakes)).map((mistakeButton, index) => {

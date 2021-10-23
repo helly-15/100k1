@@ -7,12 +7,10 @@ export const RepliesList = (props) => {
     return <div className={ classnameRoot }>
         { props.repliesForRound.map((reply, index) => {
             const isReplyGuessed = props.guessedReplies.includes(index);
-            return <button className={ classnameRoot + '__reply' }
+            return <button className={ `${classnameRoot}__reply ${isReplyGuessed?classnameRoot+'__reply_answered':''}`}
                            onClick={ (e) => {
                                let replyAnswerSound = new Audio("/line_open.mp3");
                                replyAnswerSound.play();
-                               e.target.style.backgroundColor = 'black';
-                              // e.target.firstChild.style.backgroundColor = 'black';
                                props.setRepliesForRoundOpened(index)
                            }
                            }

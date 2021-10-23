@@ -14,7 +14,9 @@
         width: 100%;
         min-height: 70px;
         transition: 0.5s;
-
+        &_answered {
+            background-color: black;
+        }
     }
 
     &__reply_answer {
