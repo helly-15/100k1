@@ -1,9 +1,17 @@
 import './MistakesCounter.scss';
+import {useEffect} from "react";
 
 const classnameRoot = 'mistakes-counter';
 const numberOfMistakes = 3;
 
 export const MistakesCounter = (props) => {
+
+    useEffect(() => {
+        if (document.getElementsByClassName(classnameRoot + '__cross-icon')) {
+            Array.from(document.getElementsByClassName(classnameRoot + '__cross-icon')).map(elem => elem.style.background = 'linear-gradient(to bottom, #fefcea 0%, #f1da36 100%)')
+
+        }
+    }, [props.roundNumber]);
     return <div className={ classnameRoot }>
         <div className={ classnameRoot + '__round-icon' }>
             { +props.roundNumber !== 3 ? props.roundNumber + 1 : '?' }
