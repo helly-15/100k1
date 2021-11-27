@@ -12,7 +12,7 @@
         display: flex;
         margin: 0 auto;
         width: 100%;
-        min-height: 70px;
+        height: 10vh;
         transition: 0.5s;
         &_answered {
             background-color: black;
@@ -20,13 +20,12 @@
     }
 
     &__reply_answer {
-        font-size: 40px;
-        line-height: 50px;
+        font-size: 6vh;
         background-color: red;
         font-weight: 700;
         color: white;
         margin: 0 auto;
-        padding: 10px 20px;
+        padding: 1vh 2vh;
 
         &_answered {
             background-color: black;

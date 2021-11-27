@@ -5,8 +5,8 @@
     justify-content: center;
     align-items: center;
     &__round-icon {
-        width: 100px;
-        height: 140px;
+        width: 15vh;
+        height: 20vh;
         border-radius: 10px;
         background-color: purple;
         color: yellow;
@@ -15,11 +15,11 @@
         justify-content: center;
         align-items: center;
         font-weight: 700;
-        margin: 30px 0;
+        margin: 5vh 0;
     }
     &__cross-icon {
-        width: 80px;
-        height: 60px;
+        width: 10vh;
+        height: 10vh;
         border-radius: 8px;
         background: linear-gradient(to bottom, #fefcea 0%,#f1da36 100%);
         color: red;
