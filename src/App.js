@@ -17,8 +17,12 @@ function App() {
     const [data, setData] = useState(dataFromStore);
 //connect to backend. if no backend - comment useEffect
     useEffect(()=>{
-        fetch('/api')
-            .then(response=>response.json())
+        fetch('https://100k1back.netlify.app/api')
+
+            .then(response=>
+                console.log ( response)
+                //response.json()
+            )
             .then(data => setData (data))
     },[])
     //
