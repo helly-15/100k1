@@ -2,12 +2,11 @@ import {RoundScore} from "../../components/round-score/RoundScore";
 import {QuestionsBoard} from "../../components/questions-board/QuestionsBoard";
 import './RoundWrapper.scss';
 import {useState} from "react";
-import {data} from "../../data";
 
 const classnameRoot = 'round-wrapper';
 
 export const RoundWrapper = (props) => {
-    const questionText = data.questions[props.roundNumber].title || 'Большая игра';
+    const questionText = props.data.questions[props.roundNumber].title || 'Большая игра';
      const [totalScore, setTotalScore] = useState(0);
     const [leftTeamScore, setLeftTeamScore] = useState([0]);
     const [rightTeamScore, setRightTeamScore] = useState([0]);
@@ -26,8 +25,8 @@ export const RoundWrapper = (props) => {
             </aside>
                 <QuestionsBoard
                                 roundNumber = {+props.roundNumber}
-                                 correctReplies = {data.questions[props.roundNumber].correctReplies || ['1', '2', '3', '4', '5', '6']}
-                                 repliesScores = {data.questions[props.roundNumber].repliesScores || ['1', '2', '3', '4', '5', '6']}
+                                 correctReplies = {props.data.questions[props.roundNumber].correctReplies || ['1', '2', '3', '4', '5', '6']}
+                                 repliesScores = {props.data.questions[props.roundNumber].repliesScores || ['1', '2', '3', '4', '5', '6']}
                                  setTotalScore = {setTotalScore}
                                  totalScore = {Number(totalScore)}
                 />

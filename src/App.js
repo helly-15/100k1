@@ -1,10 +1,11 @@
 import './App.css';
 import {Navbar} from "./components/navbar/Navbar";
 import {RoundWrapper} from "./screen/round-wrapper/RoundWrapper";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {BrowserRouter} from "react-router-dom";
-import {data} from "./data";
+
 import {ModalStarter} from "./modals/modal-starter/ModalStarter";
+import {dataFromStore} from "./data";
 
 const roundsNames = ['Простая игра', ' Двойная игра', 'Тройная игра', 'Игра наоборот', 'Большая игра']
 
@@ -13,6 +14,14 @@ function App() {
     const [roundNumber, setRoundNumber] = useState([0]);
     const [totalScore, setTotalScore] = useState([0]);
     const [modalShown, setModalShown] = useState(true);
+    const [data, setData] = useState(dataFromStore);
+//connect to backend. if no backend - comment useEffect
+    useEffect(()=>{
+        fetch('/api')
+            .then(response=>response.json())
+            .then(data => setData (data))
+    },[])
+    //
     return (
         <div className="App">
             {modalShown ? <ModalStarter setModalShown = {setModalShown} /> :
@@ -26,7 +35,7 @@ function App() {
                             totalScore = {Number(totalScore)}
                     />
 
-                    <RoundWrapper roundNumber = {roundNumber} totalScore = {totalScore} setTotalScore = {setTotalScore}/>
+                    <RoundWrapper data = {data} roundNumber = {roundNumber} totalScore = {totalScore} setTotalScore = {setTotalScore}/>
                 </BrowserRouter>
             }
 
