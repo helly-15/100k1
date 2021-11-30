@@ -15,14 +15,13 @@ function App() {
     const [totalScore, setTotalScore] = useState([0]);
     const [modalShown, setModalShown] = useState(true);
     const [data, setData] = useState(dataFromStore);
+    debugger;
+   let bla =  process.env;
+    debugger;
 //connect to backend. if no backend - comment useEffect
     useEffect(()=>{
-        fetch('https://100k1back.netlify.app/api')
-
-            .then(response=>
-                console.log ( response)
-                //response.json()
-            )
+        fetch('https://arcane-plateau-88908.herokuapp.com/api')
+            .then(response=>response.json())
             .then(data => setData (data))
     },[])
     //
