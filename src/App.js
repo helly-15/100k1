@@ -21,7 +21,7 @@ function App() {
             .then(response=>response.json())
             .then(data => setData (data))
     },[])
-    //
+    console.log (data)
     return (
         <div className="App">
             {modalShown ? <ModalStarter setModalShown = {setModalShown} /> :
