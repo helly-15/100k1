@@ -16,12 +16,11 @@ function App() {
     const [modalShown, setModalShown] = useState(true);
     const [data, setData] = useState(dataFromStore);
 //connect to backend. if no backend - comment useEffect
-    useEffect(()=>{
-        fetch('https://arcane-plateau-88908.herokuapp.com/api')
-            .then(response=>response.json())
-            .then(data => setData (data))
-    },[])
-    console.log (data)
+//     useEffect(()=>{
+//         fetch('https://arcane-plateau-88908.herokuapp.com/api')
+//             .then(response=>response.json())
+//             .then(data => setData (data))
+//     },[])
     return (
         <div className="App">
             {modalShown ? <ModalStarter setModalShown = {setModalShown} /> :
