@@ -6,6 +6,7 @@ import {BrowserRouter} from "react-router-dom";
 
 import {ModalStarter} from "./modals/modal-starter/ModalStarter";
 import {dataFromStore} from "./data";
+import {datanewyear} from "./data-new-year";
 
 const roundsNames = ['Простая игра', ' Двойная игра', 'Тройная игра', 'Игра наоборот', 'Большая игра']
 
@@ -14,7 +15,7 @@ function App() {
     const [roundNumber, setRoundNumber] = useState([0]);
     const [totalScore, setTotalScore] = useState([0]);
     const [modalShown, setModalShown] = useState(true);
-    const [data, setData] = useState(dataFromStore);
+    const [data, setData] = useState(datanewyear);
 //connect to backend. if no backend - comment useEffect
 //     useEffect(()=>{
 //         fetch('https://arcane-plateau-88908.herokuapp.com/api')
@@ -23,6 +24,8 @@ function App() {
 //     },[])
     return (
         <div className="App">
+
+
             {modalShown ? <ModalStarter setModalShown = {setModalShown} /> :
                 <BrowserRouter>
                     <Navbar roundsNames={ roundsNames }
@@ -33,7 +36,8 @@ function App() {
                             setTotalScore = {setTotalScore}
                             totalScore = {Number(totalScore)}
                     />
-
+                    <img  className={  'main__tree' } src={'/tree3.png'} alt ={'new year fireworks'}/>
+                    <img  className={ 'main__tree_right' } src={'/tree.png'} alt ={'new year fireworks'}/>
                     <RoundWrapper data = {data} roundNumber = {roundNumber} totalScore = {totalScore} setTotalScore = {setTotalScore}/>
                 </BrowserRouter>
             }
@@ -42,7 +46,7 @@ function App() {
                 let introSound = new Audio("/100-k-1-20-seconds.mp3");
                 introSound.play();
             }
-            }> ⏰</button>
+            }> ⏰ </button>
         </div>
     );
 }

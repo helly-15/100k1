@@ -40,6 +40,16 @@ export const QuestionsBoard = (props) => {
                 />
             } }
                    path={ '/simplegame' }/>
+{/*заменить повтор кода*/}
+            <Route component={ () => {
+                return <RepliesList repliesForRound={ repliesForRound }
+                                    setRepliesForRoundOpened={ setRepliesForRoundOpened }
+                                    correctReplies={ correctReplies }
+                                    guessedReplies={ guessedReplies }
+                                    repliesScores={ repliesScores }
+                />
+            } }
+                   path={ '/' }/>
             <Route component={ () => {
                 return <RepliesList repliesForRound={ repliesForRound }
                                     setRepliesForRoundOpened={ setRepliesForRoundOpened }

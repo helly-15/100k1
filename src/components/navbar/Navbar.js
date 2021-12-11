@@ -1,7 +1,5 @@
 import './Navbar.scss';
 import {Link} from "react-router-dom";
-// import {RepliesList} from "../question-list/RepliesList";
-// import {useState} from "react";
 
 const classnameRoot = 'navbar';
 
@@ -21,7 +19,7 @@ export const Navbar = (props) => {
                 props.roundsNames.map((round, index) => <Link
                     className={ `${ classnameRoot }__tab ${ (+activeRoundNumber === +index) ? classnameRoot + '__tab_active' : '' }` }
                     key={ round }
-                    onClick={ (e) => {
+                    onClick={ () => {
                         props.setRoundNumber(index);
                         audioArray[index].play();
                     }

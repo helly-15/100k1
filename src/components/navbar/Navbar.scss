@@ -9,9 +9,16 @@
         font-weight: 700;
         box-sizing: border-box;
         text-decoration: none;
+        color: aquamarine;
         &_active{
-            background-color: azure;
-            border: 2px solid black;
+            background-color: green;
+            border-radius: 10px;
+        }
+        &:visited {
+            color: cadetblue;
+        }
+        &:focus {
+            color: aquamarine;
         }
     }
 

@@ -23,13 +23,16 @@ export const RoundWrapper = (props) => {
                             totalScore = {Number(totalScore)} teamScore = {Number(leftTeamScore)}
                             resetTotalScore = {setTotalScore} roundNumber = {props.roundNumber}/>
             </aside>
+            {+props.roundNumber < 4 ?
                 <QuestionsBoard
-                                roundNumber = {+props.roundNumber}
-                                 correctReplies = {props.data.questions[props.roundNumber].correctReplies || ['1', '2', '3', '4', '5', '6']}
-                                 repliesScores = {props.data.questions[props.roundNumber].repliesScores || ['1', '2', '3', '4', '5', '6']}
-                                 setTotalScore = {setTotalScore}
-                                 totalScore = {Number(totalScore)}
-                />
+                    roundNumber = {+props.roundNumber}
+                    correctReplies = {props.data.questions[props.roundNumber].correctReplies || ['1', '2', '3', '4', '5', '6']}
+                    repliesScores = {props.data.questions[props.roundNumber].repliesScores || ['1', '2', '3', '4', '5', '6']}
+                    setTotalScore = {setTotalScore}
+                    totalScore = {Number(totalScore)}
+                />:  <img  className={ 'round-wrapper__santa' } src={'/santa.png'} alt ={'new year fireworks'}/>
+            }
+
 
             <aside className={classnameRoot + '__questions-board_team'}>
                 <RoundScore score={ rightTeamScore } onSetTeamScore = {setRightTeamScore}

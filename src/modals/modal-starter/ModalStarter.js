@@ -3,7 +3,7 @@ const classnameRoot = 'modal-starter';
 
 export const ModalStarter = (props) => {
     return <div className={ classnameRoot }>
-
+        <img  className={ classnameRoot + '__image_new-year' } src={'/fireworks2.png'} alt ={'new year fireworks'}/>
         <div className={ classnameRoot + '__image-wrapper' }>
             <img  className={ classnameRoot + '__image' } src={'/screenStarter.jpg'} alt ={'intro logo'}/>
             <button className={ classnameRoot + '__button' } onClick={()=>{
@@ -12,7 +12,8 @@ export const ModalStarter = (props) => {
                 simpleGameSound.play();
             }
 
-            }> Поехали!</button>
+            }>
+                 Поехали!</button>
             <button className={ classnameRoot + '__button-music' } onClick={()=>{
                 let introSound = new Audio("/zastavka-100-k-1-stereo.mp3");
                 introSound.play();
