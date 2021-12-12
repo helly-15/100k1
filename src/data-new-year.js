@@ -27,7 +27,7 @@ export const datanewyear = {
         {
             id: 5,
             title: '',
-            correctReplies: ['', '', 'Розенбаум', ' Цой', 'Антонов', 'Макаревич'],
+            correctReplies: ['', '', '', ' Цой', 'Антонов', 'Макаревич'],
             repliesScores: ['15', '30', '60', ' 120', '180', '240'],
         },
     ]
