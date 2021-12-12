@@ -1,11 +1,11 @@
 import './App.css';
 import {Navbar} from "./components/navbar/Navbar";
 import {RoundWrapper} from "./screen/round-wrapper/RoundWrapper";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import {BrowserRouter} from "react-router-dom";
 
 import {ModalStarter} from "./modals/modal-starter/ModalStarter";
-import {dataFromStore} from "./data";
+//import {dataFromStore} from "./data";
 import {datanewyear} from "./data-new-year";
 
 const roundsNames = ['Простая игра', ' Двойная игра', 'Тройная игра', 'Игра наоборот', 'Большая игра']
@@ -15,7 +15,8 @@ function App() {
     const [roundNumber, setRoundNumber] = useState([0]);
     const [totalScore, setTotalScore] = useState([0]);
     const [modalShown, setModalShown] = useState(true);
-    const [data, setData] = useState(datanewyear);
+    const data = datanewyear;
+    //const [data, setData] = useState(datanewyear);
 //connect to backend. if no backend - comment useEffect
 //     useEffect(()=>{
 //         fetch('https://arcane-plateau-88908.herokuapp.com/api')
