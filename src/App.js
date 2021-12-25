@@ -6,7 +6,7 @@ import {BrowserRouter} from "react-router-dom";
 
 import {ModalStarter} from "./modals/modal-starter/ModalStarter";
 //import {dataFromStore} from "./data";
-import {datanewyear} from "./data-new-year";
+import {dataFromStore} from "./data";
 
 const roundsNames = ['Простая игра', ' Двойная игра', 'Тройная игра', 'Игра наоборот', 'Большая игра']
 
@@ -15,7 +15,7 @@ function App() {
     const [roundNumber, setRoundNumber] = useState([0]);
     const [totalScore, setTotalScore] = useState([0]);
     const [modalShown, setModalShown] = useState(true);
-    const data = datanewyear;
+    const data = dataFromStore;
     //const [data, setData] = useState(datanewyear);
 //connect to backend. if no backend - comment useEffect
 //     useEffect(()=>{
