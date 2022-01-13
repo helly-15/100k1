@@ -1,12 +1,13 @@
 import './App.css';
 import {Navbar} from "./components/navbar/Navbar";
 import {RoundWrapper} from "./screen/round-wrapper/RoundWrapper";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {BrowserRouter} from "react-router-dom";
 
 import {ModalStarter} from "./modals/modal-starter/ModalStarter";
 //import {dataFromStore} from "./data";
 import {connect} from "react-redux";
+import {GET_DATA_REQUESTED} from "./redux-state/reducers/questionsReducer";
 
 
 const roundsNames = ['Простая игра', ' Двойная игра', 'Тройная игра', 'Игра наоборот', 'Большая игра']
@@ -16,15 +17,14 @@ function AppComponent(props) {
     const [roundNumber, setRoundNumber] = useState([0]);
     const [totalScore, setTotalScore] = useState([0]);
     const [modalShown, setModalShown] = useState(true);
+    const {questionsData, requestDataFetch} = props;
     //const data = dataFromStore;
     //const [data, setData] = useState(dataFromStore);
 //connect to backend. if no backend - comment useEffect
-//     useEffect(()=>{
-//         fetch('https://arcane-plateau-88908.herokuapp.com/api')
-//             .then(response=>response.json())
-//             .then(data => setData (data))
-//     },[])
-    const data = props.questionsData;
+    useEffect(() => {
+        requestDataFetch()
+    }, [])
+    const data = questionsData;
     return (
         <div className="App">
 
@@ -58,4 +58,10 @@ function AppComponent(props) {
 
 export const App = connect((state) => ({
     questionsData: state.questionsData.questionsData,
-}), null)(AppComponent)
+}), (dispatch) => {
+    return {
+        requestDataFetch: () => {
+            dispatch({type: GET_DATA_REQUESTED});
+        },
+    };
+})(AppComponent)
