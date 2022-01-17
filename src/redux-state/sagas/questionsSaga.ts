@@ -1,5 +1,5 @@
-import { questionApi } from "../api/questionDataApi";
-import { GET_DATA, GET_DATA_REQUESTED } from "../redux-state/reducers/questionsReducer";
+import { questionApi } from "../../api/questionDataApi";
+import { GET_DATA, GET_DATA_REQUESTED } from "../reducers/questionsReducer";
 import { call, put, takeLatest } from 'redux-saga/effects';
 
 
