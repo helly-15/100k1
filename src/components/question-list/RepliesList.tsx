@@ -1,17 +1,25 @@
 import './RepliesList.scss';
+import React from "react";
 
 const classnameRoot = 'replies-list';
 
-export const RepliesList = (props) => {
+interface IRepliesListProps {
+    guessedReplies: Array<number>,
+    repliesForRound: Array<string>,
+    setRepliesForRoundOpened:(index: number)=>void,
+    repliesScores: Array<string>,
+}
+
+export const RepliesList: React.FC<IRepliesListProps> = ({guessedReplies, repliesForRound, setRepliesForRoundOpened, repliesScores}) => {
 
     return <div className={ classnameRoot }>
-        { props.repliesForRound.map((reply, index) => {
-            const isReplyGuessed = props.guessedReplies.includes(index);
+        { repliesForRound.map((reply, index) => {
+            const isReplyGuessed = guessedReplies.includes(index);
             return <button className={ `${classnameRoot}__reply ${isReplyGuessed?classnameRoot+'__reply_answered':''}`}
-                           onClick={ (e) => {
+                           onClick={ () => {
                                let replyAnswerSound = new Audio("/line_open.mp3");
                                replyAnswerSound.play();
-                               props.setRepliesForRoundOpened(index)
+                               setRepliesForRoundOpened(index)
                            }
                            }
                            key={ 'reply-button' + index }
@@ -23,7 +31,7 @@ export const RepliesList = (props) => {
                              {reply}
                             </span>
                             <span className={ classnameRoot + '__reply_text' }>
-                             { props.repliesScores[index]}
+                             { repliesScores[index]}
                             </span>
                         </div>
                         : reply }

@@ -1,11 +1,18 @@
 import './Navbar.scss';
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+import React from "react";
 
 const classnameRoot = 'navbar';
 
-export const Navbar = (props) => {
+interface INavbarProps {
+    activeRoundNumber: number,
+    roundsNames: Array<string>,
+    setRoundNumber: React.Dispatch<React.SetStateAction<number>>,
+
+}
+
+export const Navbar: React.FC<INavbarProps> = ({activeRoundNumber, roundsNames, setRoundNumber}) => {
     const routes = ['simplegame', 'doublegame', 'triplegame', 'gameviceversa', 'biggame']
-    const activeRoundNumber = props.activeRoundNumber;
     let roundOneSound = new Audio("/simple-game.mp3");
     let roundTwoSound = new Audio("/double-game.mp3");
     let roundThreeSound = new Audio("/triple-game.mp3");
@@ -16,11 +23,11 @@ export const Navbar = (props) => {
     return <nav className={ classnameRoot }>
         <ul className={ classnameRoot + '__tab-wrapper' }>
             {
-                props.roundsNames.map((round, index) => <Link
+                roundsNames.map((round, index) => <Link
                     className={ `${ classnameRoot }__tab ${ (+activeRoundNumber === +index) ? classnameRoot + '__tab_active' : '' }` }
                     key={ round }
                     onClick={ () => {
-                        props.setRoundNumber(index);
+                        setRoundNumber(index);
                         audioArray[index].play();
                     }
                     }
@@ -28,9 +35,6 @@ export const Navbar = (props) => {
                 >
                     { round }
                 </Link>)
-            }
-            {
-
             }
         </ul>
 
