@@ -1,16 +1,24 @@
 import './QuestionsBoard.scss';
-import {MistakesCounter} from "../mistakes-counter/MistakesCounter";
-import {RepliesList} from "../question-list/RepliesList";
-import {useEffect, useState} from "react";
-import {Route, Switch} from 'react-router-dom';
+import { MistakesCounter } from "../mistakes-counter/MistakesCounter";
+import { RepliesList } from "../question-list/RepliesList";
+import React, { useEffect, useState } from "react";
+import { Route, Switch } from 'react-router-dom';
 
 const classnameRoot = 'questions-board';
 
-export const QuestionsBoard = (props) => {
+interface IQuestionsBoardProps {
+    setTotalScore: React.Dispatch<React.SetStateAction<number>>
+    roundNumber: number,
+    correctReplies: string[],
+    repliesScores: string[],
+    totalScore: number,
+}
+
+export const QuestionsBoard: React.FC<IQuestionsBoardProps> = (props) => {
     const {roundNumber, correctReplies, repliesScores} = props;
-    const [guessedReplies, setGuessedReplies] = useState([]);
-    const [repliesForRound, setRepliesForRound] = useState(['1', '2', '3', '4', '5', '6']);
-    const setRepliesForRoundOpened = (index) => {
+    const [guessedReplies, setGuessedReplies] = useState<number[]>([]);
+    const [repliesForRound, setRepliesForRound] = useState<string[]>(['1', '2', '3', '4', '5', '6']);
+    const setRepliesForRoundOpened = (index: number) => {
         setRepliesForRound([
             ...repliesForRound.slice(0, index),
             correctReplies[index],
@@ -27,24 +35,22 @@ export const QuestionsBoard = (props) => {
         setGuessedReplies([]);
         setRepliesForRound(['1', '2', '3', '4', '5', '6'])
     }, [roundNumber])
-
+//toDo fix code replication
     return <div className={ classnameRoot }>
         <MistakesCounter roundNumber={ props.roundNumber }/>
         <Switch>
             <Route component={ () => {
                 return <RepliesList repliesForRound={ repliesForRound }
                                     setRepliesForRoundOpened={ setRepliesForRoundOpened }
-                                    correctReplies={ correctReplies }
                                     guessedReplies={ guessedReplies }
                                     repliesScores={ repliesScores }
                 />
             } }
                    path={ '/simplegame' }/>
-{/*заменить повтор кода*/}
+
             <Route component={ () => {
                 return <RepliesList repliesForRound={ repliesForRound }
                                     setRepliesForRoundOpened={ setRepliesForRoundOpened }
-                                    correctReplies={ correctReplies }
                                     guessedReplies={ guessedReplies }
                                     repliesScores={ repliesScores }
                 />
@@ -53,7 +59,6 @@ export const QuestionsBoard = (props) => {
             <Route component={ () => {
                 return <RepliesList repliesForRound={ repliesForRound }
                                     setRepliesForRoundOpened={ setRepliesForRoundOpened }
-                                    correctReplies={ correctReplies }
                                     guessedReplies={ guessedReplies }
                                     repliesScores={ repliesScores }
                 />
@@ -61,7 +66,6 @@ export const QuestionsBoard = (props) => {
             <Route component={ () => {
                 return <RepliesList repliesForRound={ repliesForRound }
                                     setRepliesForRoundOpened={ setRepliesForRoundOpened }
-                                    correctReplies={ correctReplies }
                                     guessedReplies={ guessedReplies }
                                     repliesScores={ repliesScores }
                 />
@@ -69,7 +73,6 @@ export const QuestionsBoard = (props) => {
             <Route component={ () => {
                 return <RepliesList repliesForRound={ repliesForRound }
                                     setRepliesForRoundOpened={ setRepliesForRoundOpened }
-                                    correctReplies={ correctReplies }
                                     guessedReplies={ guessedReplies }
                                     repliesScores={ repliesScores }
                 />
@@ -77,7 +80,6 @@ export const QuestionsBoard = (props) => {
             <Route component={ () => {
                 return <RepliesList repliesForRound={ repliesForRound }
                                     setRepliesForRoundOpened={ setRepliesForRoundOpened }
-                                    correctReplies={ correctReplies }
                                     guessedReplies={ guessedReplies }
                                     repliesScores={ repliesScores }
                 />

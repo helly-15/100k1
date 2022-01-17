@@ -20,12 +20,8 @@ const roundsNames = ['Простая игра', ' Двойная игра', 'Т�
 
 function AppComponent(props: IAppComponentStateProps) {
     const [roundNumber, setRoundNumber] = useState<number>(0);
-    const [totalScore, setTotalScore] = useState<number>(0);
     const [modalShown, setModalShown] = useState<boolean>(true);
     const {questionsData, requestDataFetch} = props;
-    //const data = dataFromStore;
-    //const [data, setData] = useState(dataFromStore);
-//connect to backend. if no backend - comment useEffect
     useEffect(() => {
         requestDataFetch()
     }, [])
@@ -37,11 +33,9 @@ function AppComponent(props: IAppComponentStateProps) {
                             setRoundNumber={ setRoundNumber }
                             activeRoundNumber={ roundNumber }
                     />
-                    <RoundWrapper data={ questionsData } roundNumber={ roundNumber } totalScore={ totalScore }
-                                  setTotalScore={ setTotalScore }/>
+                    <RoundWrapper data={ questionsData } roundNumber={ roundNumber }/>
                 </BrowserRouter>
             }
-
             <button className={ 'button-timer' } onClick={ () => {
                 let introSound = new Audio("/100-k-1-20-seconds.mp3");
                 introSound.play();
