@@ -4,8 +4,8 @@ import React from "react";
 const classnameRoot = 'round-score';
 
 interface IRoundScoreProps {
-    onSetTeamScore: React.Dispatch<React.SetStateAction<number>>,
-    resetTotalScore: React.Dispatch<React.SetStateAction<number>>
+    onSetTeamScore: (arg0: number) => void,
+    resetTotalScore: (arg0:number) => void,
     roundNumber?: number,
     score: number,
     totalScore?: number,

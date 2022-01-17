@@ -8,7 +8,7 @@ const classnameRoot = 'questions-board';
 const routePaths = ['/simplegame', '/doublegame', '/triplegame', '/gameviceversa', '/biggame']
 
 interface IQuestionsBoardProps {
-    setTotalScore: React.Dispatch<React.SetStateAction<number>>
+    setTotalScore: (arg0: number) => void,
     roundNumber: number,
     correctReplies: string[],
     repliesScores: string[],
@@ -47,7 +47,9 @@ export const QuestionsBoard: React.FC<IQuestionsBoardProps> = (props) => {
         <MistakesCounter roundNumber={ props.roundNumber }/>
         <Switch>
             { routePaths.map((route) => {
-                return <Route component={ () => {
+                return <Route
+                    key = {route}
+                    component={ () => {
                     return repliesListComponent
                 } }
                               path={ route }/>

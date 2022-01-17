@@ -1,6 +1,6 @@
 import './App.css';
 import { Navbar } from "./components/navbar/Navbar";
-import { RoundWrapper } from "./screen/round-wrapper/RoundWrapper";
+import { RoundWrapperConnected } from "./screen/round-wrapper/RoundWrapper";
 import React, { useEffect, useState } from "react";
 import { BrowserRouter } from "react-router-dom";
 import { ModalStarter } from "./modals/modal-starter/ModalStarter";
@@ -33,7 +33,7 @@ function AppComponent(props: IAppComponentStateProps) {
                             setRoundNumber={ setRoundNumber }
                             activeRoundNumber={ roundNumber }
                     />
-                    <RoundWrapper data={ questionsData } roundNumber={ roundNumber }/>
+                    <RoundWrapperConnected data={ questionsData } roundNumber={ roundNumber }/>
                 </BrowserRouter>
             }
             <button className={ 'button-timer' } onClick={ () => {

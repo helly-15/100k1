@@ -1,22 +1,47 @@
 import { RoundScore } from "../../components/round-score/RoundScore";
 import { QuestionsBoard } from "../../components/questions-board/QuestionsBoard";
 import './RoundWrapper.scss';
-import React, { useState } from "react";
+import React from "react";
 import { IQuestionsData } from "../../redux-state/interfaces/IQuestion";
+import { connect } from "react-redux";
+import { IStoreState } from "../../redux-state/interfaces/IStore";
+import {
+    CHANGE_LEFT_TEAM_SCORE,
+    CHANGE_RIGHT_TEAM_SCORE,
+    CHANGE_TOTAL_SCORE
+} from "../../redux-state/reducers/scoreReducer";
 
 const classnameRoot = 'round-wrapper';
 
-interface IRoundWrapperProps {
+interface IRoundWrapperOwnProps {
     data: IQuestionsData,
     roundNumber: number,
 }
 
-export const RoundWrapper: React.FC<IRoundWrapperProps> = ({data, roundNumber}) => {
-    const questionText = data.questions[roundNumber].title || 'Большая игра';
-    const [totalScore, setTotalScore] = useState(0);
-    const [leftTeamScore, setLeftTeamScore] = useState(0);
-    const [rightTeamScore, setRightTeamScore] = useState(0);
+interface IRoundWrapperStateProps {
+    totalScore: number,
+    leftTeamScore: number,
+    rightTeamScore: number,
+    setTotalScore: (arg0: number) => void,
+    setLeftTeamScore: (arg0: number) => void,
+    setRightTeamScore:(arg0: number) => void,
+}
 
+interface IRoundWrapperProps extends IRoundWrapperOwnProps, IRoundWrapperStateProps {
+}
+
+
+export const RoundWrapper: React.FC<IRoundWrapperProps> = ({
+                                                               data,
+                                                               roundNumber,
+                                                               totalScore,
+                                                               setTotalScore,
+                                                               leftTeamScore,
+                                                               setLeftTeamScore,
+                                                               rightTeamScore,
+                                                               setRightTeamScore
+                                                           }) => {
+    const questionText = data.questions[roundNumber].title || 'Большая игра';
     return <main className={ classnameRoot }>
         <RoundScore score={ totalScore } resetTotalScore={ setTotalScore } onSetTeamScore={ setTotalScore }/>
         <span className={ classnameRoot + '__question-text' }>
@@ -48,3 +73,21 @@ export const RoundWrapper: React.FC<IRoundWrapperProps> = ({data, roundNumber}) 
         </div>
     </main>
 }
+
+export const RoundWrapperConnected: React.FC<IRoundWrapperOwnProps> = connect((state: IStoreState) => ({
+    totalScore: state.score.totalScore,
+    leftTeamScore: state.score.leftTeamScore,
+    rightTeamScore: state.score.rightTeamScore,
+}), (dispatch) => {
+    return {
+        setTotalScore: (score: number) => {
+            dispatch({type: CHANGE_TOTAL_SCORE, payload: score});
+        },
+        setLeftTeamScore: (score: number) => {
+            dispatch({type: CHANGE_LEFT_TEAM_SCORE, payload: score});
+        },
+        setRightTeamScore: (score: number) => {
+            dispatch({type: CHANGE_RIGHT_TEAM_SCORE, payload: score});
+        },
+    };
+})(RoundWrapper)
