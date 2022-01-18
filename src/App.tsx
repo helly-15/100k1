@@ -12,13 +12,12 @@ import { IQuestionsData } from "./redux-state/interfaces/IQuestion";
 interface IAppComponentStateProps {
     questionsData: IQuestionsData,
     requestDataFetch: () => void,
-
 }
 
 const roundsNames = ['Простая игра', ' Двойная игра', 'Тройная игра', 'Игра наоборот', 'Большая игра']
 
 
-function AppComponent(props: IAppComponentStateProps) {
+export function AppComponent(props: IAppComponentStateProps) {
     const [roundNumber, setRoundNumber] = useState<number>(0);
     const [modalShown, setModalShown] = useState<boolean>(true);
     const {questionsData, requestDataFetch} = props;
@@ -46,7 +45,7 @@ function AppComponent(props: IAppComponentStateProps) {
     );
 }
 
-export const App: React.FC<IAppComponentStateProps> = connect((state: IStoreState) => ({
+export const App: React.FC = connect((state: IStoreState) => ({
     questionsData: state.questionsData.questionsData,
 }), (dispatch) => {
     return {
