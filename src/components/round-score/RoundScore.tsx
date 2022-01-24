@@ -1,5 +1,5 @@
 import './RoundScore.scss';
-import React from "react";
+import React from 'react';
 
 const classnameRoot = 'round-score';
 
@@ -12,19 +12,40 @@ interface IRoundScoreProps {
     teamScore?: number,
 }
 
-export const RoundScore: React.FC<IRoundScoreProps> = (props) => {
-    const coefficientOfRoundMultiplication = props.roundNumber === 1 ? 2 : props.roundNumber === 2 ? 3 : 1;
-    return <div className={ classnameRoot } onClick={ () => {
-        let scoreGainedSound = new Audio("/round.mp3");
-        scoreGainedSound.play();
-    }
-    }>
-        <div onClick={ () => {
-            props.onSetTeamScore((props.totalScore || 0) * coefficientOfRoundMultiplication + (props.teamScore || 0))
-            props.resetTotalScore(0)
+export const RoundScore: React.FC<IRoundScoreProps> = ({
+  onSetTeamScore, resetTotalScore, roundNumber = 0, score, totalScore = 0, teamScore = 0,
+}) => {
+  const coefficientOfRoundMultiplication = roundNumber === 1 ? 2 : roundNumber === 2 ? 3 : 1;
+  const setTeamScore = () => {
+    onSetTeamScore((totalScore) * coefficientOfRoundMultiplication
+      + (teamScore));
+    resetTotalScore(0);
+  };
+  const scoreGainedSound = new Audio('/round.mp3');
+  return (
+    <div
+      role="button"
+      className={classnameRoot}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter') {
+          scoreGainedSound.play();
         }
-        }>
-            { props.score }
-        </div>
+      }}
+      onClick={() => {
+        scoreGainedSound.play();
+      }}
+    >
+      <div
+        onClick={setTeamScore}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            setTeamScore();
+          }
+        }}
+        role="button"
+      >
+        { score }
+      </div>
     </div>
-}
+  );
+};
