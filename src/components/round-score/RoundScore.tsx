@@ -25,6 +25,7 @@ export const RoundScore: React.FC<IRoundScoreProps> = ({
   return (
     <div
       role="button"
+      tabIndex={0}
       className={classnameRoot}
       onKeyDown={(e) => {
         if (e.key === 'Enter') {
@@ -37,6 +38,7 @@ export const RoundScore: React.FC<IRoundScoreProps> = ({
     >
       <div
         onClick={setTeamScore}
+        tabIndex={0}
         onKeyDown={(e) => {
           if (e.key === 'Enter') {
             setTeamScore();

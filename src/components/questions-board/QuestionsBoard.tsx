@@ -5,7 +5,8 @@ import { MistakesCounter } from '../mistakes-counter/MistakesCounter';
 import { RepliesList } from '../question-list/RepliesList';
 
 const classnameRoot = 'questions-board';
-const routePaths = ['/simplegame', '/doublegame', '/triplegame', '/gameviceversa', '/biggame'];
+// toDo move to redux
+export const routePaths = ['/simplegame', '/doublegame', '/triplegame', '/gameviceversa', '/biggame'];
 
 interface IQuestionsBoardProps {
     setTotalScore: (arg0: number) => void,
@@ -39,7 +40,6 @@ export const QuestionsBoard: React.FC<IQuestionsBoardProps> = ({
     setGuessedReplies([]);
     setRepliesForRound(['1', '2', '3', '4', '5', '6']);
   }, [roundNumber]);
-
   const repliesListComponent = (
     <RepliesList
       repliesForRound={repliesForRound}
@@ -52,11 +52,10 @@ export const QuestionsBoard: React.FC<IQuestionsBoardProps> = ({
     <div className={classnameRoot}>
       <MistakesCounter roundNumber={roundNumber} />
       <Switch>
-        { routePaths.map((route) => (
+        { ['/', ...routePaths].map((route) => (
           <Route
-            key={route}
-            component={() => repliesListComponent}
             path={route}
+            render={() => repliesListComponent}
           />
         )) }
       </Switch>

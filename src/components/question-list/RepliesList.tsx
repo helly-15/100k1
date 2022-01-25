@@ -46,6 +46,5 @@ export const RepliesList: React.FC<IRepliesListProps> = ({
         </button>
       );
     }) }
-
   </div>
 );

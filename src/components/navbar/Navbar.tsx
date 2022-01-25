@@ -1,6 +1,7 @@
 import './Navbar.scss';
 import { Link } from 'react-router-dom';
 import React from 'react';
+import { routePaths } from '../questions-board/QuestionsBoard';
 
 const classnameRoot = 'navbar';
 
@@ -12,7 +13,6 @@ interface INavbarProps {
 }
 
 export const Navbar: React.FC<INavbarProps> = ({ activeRoundNumber, roundsNames, setRoundNumber }) => {
-  const routes = ['simplegame', 'doublegame', 'triplegame', 'gameviceversa', 'biggame'];
   const roundOneSound = new Audio('/simple-game.mp3');
   const roundTwoSound = new Audio('/double-game.mp3');
   const roundThreeSound = new Audio('/triple-game.mp3');
@@ -33,7 +33,7 @@ export const Navbar: React.FC<INavbarProps> = ({ activeRoundNumber, roundsNames,
                       setRoundNumber(index);
                       audioArray[index].play();
                     }}
-                    to={`/${routes[index]}`}
+                    to={`${routePaths[index]}`}
                   >
                     { round }
                   </Link>
