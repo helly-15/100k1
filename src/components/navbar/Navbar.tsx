@@ -26,7 +26,8 @@ export const Navbar: React.FC<INavbarProps> = ({ activeRoundNumber, roundsNames,
         {
                 roundsNames.map((round, index) => (
                   <Link
-                    className={`${classnameRoot}__tab ${(+activeRoundNumber === +index) ? `${classnameRoot}__tab_active` : ''}`}
+                    className={`${classnameRoot}__tab ${(+activeRoundNumber === +index)
+                      ? `${classnameRoot}__tab_active` : ''}`}
                     key={round}
                     onClick={() => {
                       setRoundNumber(index);

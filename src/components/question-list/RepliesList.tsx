@@ -18,15 +18,18 @@ export const RepliesList: React.FC<IRepliesListProps> = ({
       const isReplyGuessed = guessedReplies.includes(index);
       return (
         <button
+          type="button"
           className={`${classnameRoot}__reply ${isReplyGuessed ? `${classnameRoot}__reply_answered` : ''}`}
           onClick={() => {
             const replyAnswerSound = new Audio('/line_open.mp3');
             replyAnswerSound.play();
             setRepliesForRoundOpened(index);
           }}
-          key={`reply-button${index}`}
+          key={Math.random()}
         >
-          <div className={`${classnameRoot}__reply_answer ${isReplyGuessed ? `${classnameRoot}__reply_answer_answered` : ''}`}>
+          <div className={`${classnameRoot}__reply_answer ${isReplyGuessed
+            ? `${classnameRoot}__reply_answer_answered` : ''}`}
+          >
             { isReplyGuessed
               ? (
                 <div className={`${classnameRoot}__reply_wrapper`}>
