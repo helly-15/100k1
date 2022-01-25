@@ -21,7 +21,6 @@
         width: 10vh;
         height: 10vh;
         border-radius: 8px;
-        background: linear-gradient(to bottom, #fefcea 0%,#f1da36 100%);
         color: red;
         font-size: 60px;
         font-weight: 700;
@@ -29,5 +28,11 @@
         justify-content: center;
         align-items: center;
 
+        &_regular {
+            background: linear-gradient(to bottom, #fefcea 0%,#f1da36 100%);
+        }
+        &_mistake {
+            background: linear-gradient(315deg, #fc9842 0%, #fe5f75 74%);
+        }
     }
 }

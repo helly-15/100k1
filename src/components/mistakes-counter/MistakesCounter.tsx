@@ -9,13 +9,10 @@ interface IMistakesCounterProps {
 }
 
 export const MistakesCounter: React.FC<IMistakesCounterProps> = (props) => {
-  const [crossButtonsArr, setCrossButtonsArr] = useState<HTMLButtonElement[]>([]);
+  const [clickedMistakesIndexes, setClickedMistakesIndexes] = useState<number[]>([]);
 
   useEffect(() => {
-    if (crossButtonsArr.length) {
-      crossButtonsArr.map((elem) => elem.style.background = 'linear-gradient(to bottom, #fefcea 0%, #f1da36 100%)');
-      setCrossButtonsArr([]);
-    }
+    setClickedMistakesIndexes([]);
   }, [props.roundNumber]);
 
   return (
@@ -26,8 +23,13 @@ export const MistakesCounter: React.FC<IMistakesCounterProps> = (props) => {
 
       { Array.apply(null, Array(numberOfMistakes)).map((_mistakeButton, index) => (
         <button
-          className={`${classnameRoot}__cross-icon`}
-          onClick={(e) => onIncorrectAnswer(e, setCrossButtonsArr, crossButtonsArr)}
+          className={clickedMistakesIndexes.includes(index) ? `${classnameRoot}__cross-icon ${classnameRoot}__cross-icon_mistake`
+            : `${classnameRoot}__cross-icon ${classnameRoot}__cross-icon_regular`}
+          onClick={() => {
+            setClickedMistakesIndexes([...clickedMistakesIndexes, index]);
+            const incorrectAnswerSound = new Audio('/100-k-1-wrong-answer.mp3');
+            incorrectAnswerSound.play();
+          }}
           key={index}
         >
           {' '}
@@ -38,13 +40,4 @@ export const MistakesCounter: React.FC<IMistakesCounterProps> = (props) => {
 
     </div>
   );
-};
-
-const onIncorrectAnswer = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, addElemToArray: (arg: HTMLButtonElement[]) => void, crossButtonsArr: HTMLButtonElement[]) => {
-  const target = e.target as HTMLButtonElement;
-  addElemToArray([...crossButtonsArr, target]);
-  const incorrectAnswerSound = new Audio('/100-k-1-wrong-answer.mp3');
-  incorrectAnswerSound.play();
-
-  target.style.background = ' linear-gradient(315deg, #fc9842 0%, #fe5f75 74%)';
 };
