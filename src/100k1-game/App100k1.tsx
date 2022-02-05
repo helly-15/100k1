@@ -1,13 +1,13 @@
-import './App.css';
+import '../App.css';
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Navbar } from './components/navbar/Navbar';
 import { RoundWrapperConnected } from './screen/round-wrapper/RoundWrapper';
 import { ModalStarter } from './modals/modal-starter/ModalStarter';
-import { GET_DATA_REQUESTED } from './redux-state/reducers/questionsReducer';
-import { IStoreState } from './redux-state/interfaces/IStore';
-import { IQuestionsData } from './redux-state/interfaces/IQuestion';
+import { GET_DATA_REQUESTED } from '../redux-state/reducers/questionsReducer';
+import { IStoreState } from '../redux-state/interfaces/IStore';
+import { IQuestionsData } from '../redux-state/interfaces/IQuestion';
 
 interface IAppComponentStateProps {
     questionsData: IQuestionsData,
@@ -16,7 +16,7 @@ interface IAppComponentStateProps {
 
 const roundsNames = ['Простая игра', ' Двойная игра', 'Тройная игра', 'Игра наоборот', 'Большая игра'];
 
-export const AppComponent = (props: IAppComponentStateProps) => {
+export const App100k1Component = (props: IAppComponentStateProps) => {
   const [roundNumber, setRoundNumber] = useState<number>(0);
   const [modalShown, setModalShown] = useState<boolean>(true);
   const { questionsData, requestDataFetch } = props;
@@ -51,10 +51,10 @@ export const AppComponent = (props: IAppComponentStateProps) => {
   );
 };
 
-export const App: React.FC = connect((state: IStoreState) => ({
+export const App100k1: React.FC = connect((state: IStoreState) => ({
   questionsData: state.questionsData.questionsData,
 }), (dispatch) => ({
   requestDataFetch: () => {
     dispatch({ type: GET_DATA_REQUESTED });
   },
-}))(AppComponent);
+}))(App100k1Component);

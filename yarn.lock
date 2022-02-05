@@ -1810,6 +1810,11 @@
   dependencies:
     "@types/node" "*"
 
+"@types/bricks.js@^1.8.2":
+  "integrity" "sha512-fXZJORe5vVtladzUiJI1RN07GXfmO+u4p5wLh567UmnZYbz9s4+m24txwO1mji4jA70ks347hcQCLW/IWlGX9Q=="
+  "resolved" "https://registry.npmjs.org/@types/bricks.js/-/bricks.js-1.8.2.tgz"
+  "version" "1.8.2"
+
 "@types/connect-history-api-fallback@^1.3.5":
   "integrity" "sha512-h8QJa8xSb1WD4fpKBDcATDNGXghFj6/3GRWG6dhmRcu0RX1Ubasur2Uvx5aeEwlf0MwblEC2bMzzMQntxnw/Cw=="
   "resolved" "https://registry.yarnpkg.com/@types/connect-history-api-fallback/-/connect-history-api-fallback-1.3.5.tgz"
@@ -2913,6 +2918,13 @@
   "version" "3.0.2"
   dependencies:
     "fill-range" "^7.0.1"
+
+"bricks.js@^1.8.0":
+  "integrity" "sha1-j96zwCJq8lH01XJ6fff5rACStLI="
+  "resolved" "https://registry.npmjs.org/bricks.js/-/bricks.js-1.8.0.tgz"
+  "version" "1.8.0"
+  dependencies:
+    "knot.js" "^1.1.5"
 
 "browser-process-hrtime@^1.0.0":
   "integrity" "sha512-9o5UecI3GhkpM6DrXr69PblIuWxPKk9Y0jHBRhdocZ2y7YECBFCsHm79Pr3OyR2AvjhDkabFJaDJMYRazHgsow=="
@@ -5936,6 +5948,11 @@
   "integrity" "sha512-pJiBpiXMbt7dkzXe8Ghj/u4FfXOOa98fPW+bihOJ4SjnoijweJrNThJfd3ifXpXhREjpoF2mZVH1GfS9LV3kHQ=="
   "resolved" "https://registry.npmjs.org/klona/-/klona-2.0.5.tgz"
   "version" "2.0.5"
+
+"knot.js@^1.1.5":
+  "integrity" "sha1-KOclIvcD9Q/piBL94iTdcnKP710="
+  "resolved" "https://registry.npmjs.org/knot.js/-/knot.js-1.1.5.tgz"
+  "version" "1.1.5"
 
 "language-subtag-registry@~0.3.2":
   "integrity" "sha512-L0IqwlIXjilBVVYKFT37X9Ih11Um5NEl9cbJIuU/SwP/zEEAbBPOnEeeuxVMf45ydWQRDQN3Nqc96OgbH1K+Pg=="

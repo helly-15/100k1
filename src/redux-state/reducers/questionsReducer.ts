@@ -2,7 +2,7 @@ import { dataFromStore } from '../../data';
 import { IQuestions, IQuestionsData } from '../interfaces/IQuestion';
 
 export const GET_DATA = 'GET_DATA';
-export const GET_DATA_REQUESTED = 'GET_DATA_REQUESTED ';
+export const GET_DATA_REQUESTED = 'GET_DATA_REQUESTED';
 
 export function questionsReducer(
   state:IQuestions = { questionsData: dataFromStore },

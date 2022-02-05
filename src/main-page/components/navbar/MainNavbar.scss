@@ -1,0 +1,17 @@
+.main-navbar{
+    &__wrapper {
+        display: flex;
+        justify-content: space-between;
+    }
+    &__personal-settings_lang {
+        li{
+            display: none;
+        }
+        li:first-child {
+            display: block;
+        }
+        li:hover {
+            display: block;
+        }
+    }
+}

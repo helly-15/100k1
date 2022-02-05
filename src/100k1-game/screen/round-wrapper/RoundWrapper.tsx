@@ -4,14 +4,14 @@ import { RoundScore } from '../../components/round-score/RoundScore';
 import { QuestionsBoard } from '../../components/questions-board/QuestionsBoard';
 import './RoundWrapper.scss';
 
-import { IQuestionsData } from '../../redux-state/interfaces/IQuestion';
+import { IQuestionsData } from '../../../redux-state/interfaces/IQuestion';
 
-import { IStoreState } from '../../redux-state/interfaces/IStore';
+import { IStoreState } from '../../../redux-state/interfaces/IStore';
 import {
   CHANGE_LEFT_TEAM_SCORE,
   CHANGE_RIGHT_TEAM_SCORE,
   CHANGE_TOTAL_SCORE,
-} from '../../redux-state/reducers/scoreReducer';
+} from '../../../redux-state/reducers/scoreReducer';
 
 const classnameRoot = 'round-wrapper';
 
