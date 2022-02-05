@@ -1,24 +1,64 @@
 .main-masonry {
     &__wrapper {
+        width: 80%;
         margin: 0 auto;
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 1fr);
+        height: 100%;
+        grid-template-rows: repeat(4, 1fr) ;
+        column-gap: 10px;
+        row-gap: 15px;
+        grid-template-areas:
+        "one two three"
+        "one four three"
+        "five four six"
+        "seven eight nine"
     }
 
     &__gamecard {
+        display: block;
         position: relative;
+        height: 100%;
+        min-height: 30vh;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    &__gamecard {
+        &_0 {
+            background-image: url("../../../game-images/gamefiller0.jpg");
+            grid-area: one;
+        }
+        &_1 {
+            background-image: url("../../../game-images/gamefiller1.jpg");
+        }
+        &_2 {
+            grid-area: three;
+            background-image: url("../../../game-images/gamefiller2.jpg");
+        }
+        &_3 {
+            grid-area: four;
+            background-image: url("../../../game-images/gamefiller3.jpg");
+        }
+        &_4 {
+            background-image: url("../../../game-images/gamefiller4.jpg");
+        }
+        &_5 {
+            background-image: url("../../../game-images/gamefiller5.png");
+        }
+        &_6 {
+            background-image: url("../../../game-images/gamefiller6.png");
+        }
+        &_7 {
+            background-image: url("../../../game-images/gamefiller7.jpg");
+        }
+        &_8 {
+            background-image: url("../../../game-images/gamefiller8.jpg");
+        }
     }
 
     &__gamecard_text {
         position: absolute;
         display: flex;
-    }
-
-    &__gamecard_img {
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        width: 100%;
-
     }
 }
