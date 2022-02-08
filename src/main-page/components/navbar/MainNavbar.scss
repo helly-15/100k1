@@ -1,17 +1,54 @@
-.main-navbar{
+@import '../../../index.scss';
+.main-navbar {
+    &__logo {
+        flex: 1;
+        display: flex;
+        align-items: center;
+
+        &_img {
+            padding: 0 20px;
+        }
+    }
+
     &__wrapper {
         display: flex;
         justify-content: space-between;
+        margin: 20px 0;
     }
-    &__personal-settings_lang {
-        li{
-            display: none;
-        }
-        li:first-child {
-            display: block;
-        }
-        li:hover {
-            display: block;
+
+    &__personal-settings {
+        flex: 1;
+        margin: 0 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        li {
+            list-style-type: none;
+            cursor: pointer;
+            position: relative;
+            text-align: center;
+            margin: 5px 0;
+
+            &:hover {
+                color: whitesmoke;
+
+                ul {
+                    z-index: 1;
+                    background-color: $backroundcolor ;
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    padding: 0;
+                }
+            }
+
+            ul {
+                display: none;
+                position: absolute;
+                overflow: auto;
+            }
         }
     }
+
 }
