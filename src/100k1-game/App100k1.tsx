@@ -1,6 +1,5 @@
 import '../App.css';
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Navbar } from './components/navbar/Navbar';
 import { RoundWrapperConnected } from './screen/round-wrapper/RoundWrapper';
@@ -27,14 +26,15 @@ export const App100k1Component = (props: IAppComponentStateProps) => {
     <div className="App">
       { modalShown ? <ModalStarter setModalShown={setModalShown} />
         : (
-          <BrowserRouter>
+          <>
             <Navbar
               roundsNames={roundsNames}
               setRoundNumber={setRoundNumber}
               activeRoundNumber={roundNumber}
             />
             <RoundWrapperConnected data={questionsData} roundNumber={roundNumber} />
-          </BrowserRouter>
+          </>
+
         ) }
       <button
         type="button"

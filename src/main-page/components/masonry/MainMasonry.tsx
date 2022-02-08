@@ -18,11 +18,7 @@ export const MainMasonryComponent: React.FC<IMainMasonryProps> = () => (
         className={`${classnameRoot}__gamecard ${classnameRoot}__gamecard_${index}`}
         to="/100k1/"
         key={item}
-      >
-        <div className={`${classnameRoot}__gamecard_text`}>
-          {item}
-        </div>
-      </Link>
+      />
     ))}
   </div>
 );
