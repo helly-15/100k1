@@ -1,7 +1,7 @@
 import './MistakesCounter.scss';
 import React, { useEffect, useState } from 'react';
 
-const classnameRoot = 'mistakes-counter';
+export const classnameRoot = 'mistakes-counter';
 const numberOfMistakes = 3;
 
 interface IMistakesCounterProps {
