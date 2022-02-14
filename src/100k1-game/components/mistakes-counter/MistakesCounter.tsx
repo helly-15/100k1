@@ -32,7 +32,6 @@ export const MistakesCounter: React.FC<IMistakesCounterProps> = ({ roundNumber }
             const incorrectAnswerSound = new Audio('/100-k-1-wrong-answer.mp3');
             incorrectAnswerSound.play();
           }}
-          key={Math.random()}
         >
           {' '}
           X

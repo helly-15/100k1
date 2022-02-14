@@ -25,7 +25,7 @@ export const RepliesList: React.FC<IRepliesListProps> = ({
             replyAnswerSound.play();
             setRepliesForRoundOpened(index);
           }}
-          key={Math.random()}
+          key={reply}
         >
           <div className={`${classnameRoot}__reply_answer ${isReplyGuessed
             ? `${classnameRoot}__reply_answer_answered` : ''}`}

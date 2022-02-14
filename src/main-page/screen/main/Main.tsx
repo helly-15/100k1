@@ -18,7 +18,7 @@ export const Main: React.FC<IMainProps> = () => (
         <Route exact path="/">
           <MainMasonry />
         </Route>
-        <Route path="/100k1/">
+        <Route path="/100k1">
           <App100k1 />
         </Route>
       </Switch>

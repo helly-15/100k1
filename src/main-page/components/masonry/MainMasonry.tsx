@@ -16,7 +16,7 @@ export const MainMasonryComponent: React.FC<IMainMasonryProps> = () => (
     {gameTitles.map((item, index) => (
       <Link
         className={`${classnameRoot}__gamecard ${classnameRoot}__gamecard_${index}`}
-        to="/100k1/"
+        to="/100k1"
         key={item}
       >
 
