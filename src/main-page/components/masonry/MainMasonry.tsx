@@ -4,11 +4,12 @@ import './MainMasonry.scss';
 import { connect } from 'react-redux';
 import { gameTitles } from '../../../redux-state/reducers/gameTitlesReducer';
 import { IStoreState } from '../../../redux-state/interfaces/IStore';
+import { IGameTitles } from '../../../redux-state/interfaces/IGameTitles';
 
 const classnameRoot = 'main-masonry';
 
 interface IMainMasonryProps {
-  gameTitles:string[]
+  gameTitles:IGameTitles
 }
 
 export const MainMasonryComponent: React.FC<IMainMasonryProps> = () => (
@@ -17,18 +18,15 @@ export const MainMasonryComponent: React.FC<IMainMasonryProps> = () => (
       <Link
         className={`${classnameRoot}__gamecard ${classnameRoot}__gamecard_${index}`}
         to="/100k1"
-        key={item}
+        key={item.id}
       >
 
         <div className={`${classnameRoot}__gamecard_inner`}>
-
           <div className={`${classnameRoot}__gamecard_back`}>
-            <h1>John Doe</h1>
-            <p>Architect & Engineer</p>
-            <p>We love that guy</p>
+            <h1>{item.title}</h1>
+            <p>{ item.description }</p>
           </div>
         </div>
-
       </Link>
 
     ))}

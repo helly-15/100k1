@@ -2,7 +2,7 @@
 .main-masonry {
     &__wrapper {
         width: 80%;
-        margin: 0 auto;
+        margin: 20px auto;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         height: 100%;
@@ -47,6 +47,10 @@
             background-color: rgba($backroundcolor, 0.5);
             color: white;
             transform: rotateY(180deg);
+            h1, p {
+                margin: 10px 20px;
+            }
+
         }
     }
     &__gamecard {
