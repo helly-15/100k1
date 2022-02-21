@@ -1,4 +1,4 @@
-import '../App.css';
+import './App100k1.scss';
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Navbar } from './components/navbar/Navbar';
