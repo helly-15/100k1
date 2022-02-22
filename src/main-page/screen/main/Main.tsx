@@ -3,7 +3,8 @@ import { Route, Switch } from 'react-router-dom';
 import { MainNavbar } from '../../components/navbar/MainNavbar';
 import { MainMasonry } from '../../components/masonry/MainMasonry';
 import { App100k1 } from '../../../100k1-game/App100k1';
-// todo add classnames library cn
+import './Main.scss';
+
 const classnameRoot = 'main';
 
 interface IMainProps {
