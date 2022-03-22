@@ -2,7 +2,7 @@ import './QuestionsBoard.scss';
 import React, { useEffect, useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { MistakesCounter } from '../mistakes-counter/MistakesCounter';
-import { RepliesList } from '../question-list/RepliesList';
+import { RepliesList } from '../replies-list/RepliesList';
 
 const classnameRoot = 'questions-board';
 // toDo move to redux

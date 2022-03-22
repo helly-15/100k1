@@ -9,3 +9,12 @@ for starting the project
 
 ## npm run test 
 for running tests
+
+
+## used techs
+1. TypeScript
+2. ESLint
+3. Jest/React testing library (experiment)
+4. SASS
+5. Lottie animation
+6. 

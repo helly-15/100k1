@@ -16,6 +16,8 @@
         transition: 0.5s;
         &_answered {
             background-color: black;
+            display: flex;
+            align-items: center;
         }
     }
 
@@ -26,12 +28,16 @@
         color: white;
         margin: 0 auto;
         padding: 1vh 2vh;
+        box-sizing: border-box;
+        max-height: 100%;
+        max-width: 100%;
 
         &_answered {
             background-color: black;
             color: white;
             width: 100%;
             text-align: initial;
+            font-size: 3.6vh;
         }
     }
 
@@ -39,6 +45,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        flex: 1;
     }
 
     &__reply_text {
