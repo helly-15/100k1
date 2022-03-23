@@ -2,6 +2,7 @@ import './App100k1.scss';
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { withErrorBoundary } from 'react-error-boundary';
+import { useTranslation } from 'react-i18next';
 import { Navbar } from './components/navbar/Navbar';
 import { RoundWrapperConnected } from './screen/round-wrapper/RoundWrapper';
 import { ModalStarter } from './modals/modal-starter/ModalStarter';
@@ -16,15 +17,15 @@ interface IAppComponentStateProps {
     requestDataFetch: () => void,
 }
 
-const roundsNames = ['Простая игра', ' Двойная игра', 'Тройная игра', 'Игра наоборот', 'Большая игра'];
-
 export const App100k1Component: React.FC<IAppComponentStateProps> = ({
   questionsData,
   isQuestionsLoading,
   requestDataFetch,
 }) => {
   const [roundNumber, setRoundNumber] = useState<number>(0);
-
+  const { t } = useTranslation();
+  const roundsNames = [t('simple'), t('double'),
+    t('triple'), t('viceversa'), t('big')];
   useEffect(() => {
     requestDataFetch();
   }, []);

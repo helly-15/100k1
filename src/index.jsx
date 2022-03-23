@@ -6,6 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 import { store } from './redux-state/store/store';
 import { Main } from './main-page/screen/main/Main';
+import './localization/i18n';
 
 ReactDOM.render(
   <React.StrictMode>
