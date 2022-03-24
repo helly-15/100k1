@@ -1,6 +1,7 @@
 import React from 'react';
 import './MainNavbar.scss';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 
 const classnameRoot = 'main-navbar';
 
@@ -15,9 +16,10 @@ export const MainNavbar: React.FC = () => {
   const { t, i18n } = useTranslation();
   return (
     <div className={`${classnameRoot}__wrapper`}>
-      <div className={`${classnameRoot}__logo`}>
-        <img className={`${classnameRoot}__logo_img`} src="../logo.svg" alt="logo" />
-      </div>
+      <Link className={`${classnameRoot}__logo`} to="/">
+          <h1>{t('title')} </h1>
+
+      </Link>
       <ul className={`${classnameRoot}__personal-settings`}>
         <li className={`${classnameRoot}__personal-settings_lang`}>
           <img className={`${classnameRoot}__language_img`} src="../planet.svg" alt="language" />
