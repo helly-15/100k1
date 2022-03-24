@@ -38,7 +38,6 @@ export const MainNavbar: React.FC = () => {
               </button>
             ))}
           </ul>
-
         </li>
         <li className={`${classnameRoot}__personal-settings_login`}>
           {t('login')}

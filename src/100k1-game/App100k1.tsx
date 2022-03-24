@@ -5,7 +5,7 @@ import { withErrorBoundary } from 'react-error-boundary';
 import { useTranslation } from 'react-i18next';
 import { Navbar } from './components/navbar/Navbar';
 import { RoundWrapperConnected } from './screen/round-wrapper/RoundWrapper';
-import { ModalStarter } from './modals/modal-starter/ModalStarter';
+import { FallbackLoading } from './modals/fallback-loading/FallbackLoading';
 import { GET_DATA_REQUESTED_100K1, SET_LOADING_100K1 } from '../redux-state/reducers/questionsReducer';
 import { IStoreState } from '../redux-state/interfaces/IStore';
 import { IQuestionsData } from '../redux-state/interfaces/IQuestion';
@@ -31,7 +31,7 @@ export const App100k1Component: React.FC<IAppComponentStateProps> = ({
   }, []);
   return (
     <div className="App">
-      { isQuestionsLoading ? <ModalStarter />
+      { isQuestionsLoading ? <FallbackLoading />
         : (
           <>
             <Navbar
