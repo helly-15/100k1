@@ -1,8 +1,14 @@
 @import "../../../css/Palette";
 .round-choice {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 20px;
+  &__options {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px;
+  }
+  &__title {
+    text-align: center;
+  }
+
 
   &__button {
     position: relative;
