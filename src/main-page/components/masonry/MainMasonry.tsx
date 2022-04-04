@@ -14,21 +14,19 @@ interface IMainMasonryProps {
 
 export const MainMasonryComponent: React.FC<IMainMasonryProps> = () => (
   <div className={`${classnameRoot}__wrapper`}>
-    {gameTitles.map((item, index) => (
+    {gameTitles.map((game, index) => (
       <Link
         className={`${classnameRoot}__gamecard ${classnameRoot}__gamecard_${index}`}
-        to="/100k1"
-        key={item.id}
+        to={`gameTitle/${game.url}/roundchoice`}
+        key={game.id}
       >
-
         <div className={`${classnameRoot}__gamecard_inner`}>
           <div className={`${classnameRoot}__gamecard_back`}>
-            <h1>{item.title}</h1>
-            <p>{ item.description }</p>
+            <h1>{game.title}</h1>
+            <p>{ game.description }</p>
           </div>
         </div>
       </Link>
-
     ))}
   </div>
 );

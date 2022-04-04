@@ -17,7 +17,10 @@ export const MainNavbar: React.FC = () => {
   return (
     <div className={`${classnameRoot}__wrapper`}>
       <Link className={`${classnameRoot}__logo`} to="/">
-          <h1>{t('title')} </h1>
+        <h1>
+          {t('title')}
+          {' '}
+        </h1>
 
       </Link>
       <ul className={`${classnameRoot}__personal-settings`}>

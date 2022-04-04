@@ -17,4 +17,5 @@ for running tests
 3. Jest/React testing library (experiment)
 4. SASS
 5. Lottie animation
-6. 
+6. i18next for translation
+7. Redux Saga
