@@ -3,15 +3,16 @@ Try to play and have fun)
 Deploy - https://100k1.netlify.app/
 Typescript, React, Redux, SCSS, JEST ( used react-error-boundaries,Redux Saga, Lottie animation, CSS grids, ESLint )
 
-## npm start 
+## npm start
+
 for starting the project
 
+## npm run test
 
-## npm run test 
 for running tests
 
-
 ## used techs
+
 1. TypeScript
 2. ESLint
 3. Jest/React testing library (experiment)

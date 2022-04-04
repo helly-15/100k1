@@ -1,9 +1,9 @@
-import './FallbackLoading.scss';
-import Lottie from 'lottie-react';
-import React from 'react';
-import loading from '../../../animation/loading/loading.json';
+import "./FallbackLoading.scss";
+import Lottie from "lottie-react";
+import React from "react";
+import loading from "../../../animation/loading/loading.json";
 
-const classnameRoot = 'fallback-loading';
+const classnameRoot = "fallback-loading";
 
 export const FallbackLoading: React.FC = () => (
   <div className={classnameRoot}>

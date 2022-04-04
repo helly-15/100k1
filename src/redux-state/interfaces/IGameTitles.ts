@@ -1,3 +1,3 @@
-import { gameTitles } from '../reducers/gameTitlesReducer';
+import { gameTitles } from "../reducers/gameTitlesReducer";
 
-export type IGameTitles = typeof gameTitles
+export type IGameTitles = typeof gameTitles;

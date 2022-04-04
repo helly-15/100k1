@@ -1,71 +1,66 @@
-@import '../../../css/Palette';
+@import "../../../css/Palette";
 .main-navbar {
-    &__logo {
-        flex: 1;
-        text-decoration: none;
-        color: $textcolor;
-        display: block;
-        text-align: center;
+  &__logo {
+    flex: 1;
+    text-decoration: none;
+    color: $textcolor;
+    display: block;
+    text-align: center;
+  }
 
+  &__language {
+    &_img {
+      flex: 1;
+    }
+  }
 
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+    flex: 1;
+  }
+
+  &__personal-settings {
+    flex: 1;
+    margin: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &_lang {
+      &:hover {
+        color: whitesmoke;
+
+        ul {
+          background-color: $backroundcolor;
+          display: flex;
+          flex-direction: column;
+          padding: 0 20px;
+          z-index: 2;
+        }
+      }
     }
 
-    &__language {
+    li {
+      list-style-type: none;
+      cursor: pointer;
+      position: relative;
+      text-align: center;
+      margin: 5px auto;
 
-
-        &_img {
-            flex: 1;
-        }
+      ul {
+        display: none;
+        position: absolute;
+        overflow: auto;
+        left: -80%;
+      }
     }
-
-    &__wrapper {
-        display: flex;
-        justify-content: space-between;
-        margin: 20px 0;
-        flex:1;
+    &_lang_option {
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+      color: $textcolor;
+      padding: 10px 5px;
     }
-
-    &__personal-settings {
-        flex: 1;
-        margin: 0 20px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        &_lang {
-            &:hover {
-                color: whitesmoke;
-
-                ul {
-                    background-color: $backroundcolor ;
-                    display: flex;
-                    flex-direction: column;
-                    padding: 0 20px;
-                    z-index: 2;
-                }
-            }
-        }
-
-        li {
-            list-style-type: none;
-            cursor: pointer;
-            position: relative;
-            text-align: center;
-            margin: 5px auto;
-
-            ul {
-                display: none;
-                position: absolute;
-                overflow: auto;
-                left: -80%;
-            }
-        }
-        &_lang_option {
-            border: none;
-            background-color: transparent;
-            cursor: pointer;
-            color: $textcolor;
-            padding: 10px 5px;
-        }
-    }
-
+  }
 }

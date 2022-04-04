@@ -1,9 +1,7 @@
 @import "../css/Palette";
 
 .button {
-
   &_confirm {
-
   }
 
   &_return {
@@ -24,8 +22,9 @@
       transition: 500ms;
     }
 
-    &::before, ::after {
-      content: '';
+    &::before,
+    ::after {
+      content: "";
       position: absolute;
       width: 140px;
       height: 40px;

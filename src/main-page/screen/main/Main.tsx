@@ -1,16 +1,15 @@
-import React, { Suspense } from 'react';
-import { Route, Switch } from 'react-router-dom';
-import { MainNavbar } from '../../components/navbar/MainNavbar';
-import { MainMasonry } from '../../components/masonry/MainMasonry';
-import { App100k1 } from '../../../100k1-game/App100k1';
-import './Main.scss';
-import { FallbackLoading } from '../../../100k1-game/modals/fallback-loading/FallbackLoading';
-import { RoundChoice } from '../round-choice/RoundChoice';
+import React, { Suspense } from "react";
+import { Route, Switch } from "react-router-dom";
+import { MainNavbar } from "../../components/navbar/MainNavbar";
+import { MainMasonry } from "../../components/masonry/MainMasonry";
+import { App100k1 } from "../../../100k1-game/App100k1";
+import "./Main.scss";
+import { FallbackLoading } from "../../../100k1-game/modals/fallback-loading/FallbackLoading";
+import { RoundChoice } from "../round-choice/RoundChoice";
 
-const classnameRoot = 'main';
+const classnameRoot = "main";
 
-interface IMainProps {
-}
+interface IMainProps {}
 
 export const Main: React.FC<IMainProps> = () => (
   <div className={`${classnameRoot}__wrapper`}>
@@ -28,7 +27,6 @@ export const Main: React.FC<IMainProps> = () => (
             <App100k1 />
           </Route>
         </Switch>
-
       </div>
     </Suspense>
   </div>

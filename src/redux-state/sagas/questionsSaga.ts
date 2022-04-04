@@ -1,6 +1,10 @@
-import { call, put, takeLatest } from 'redux-saga/effects';
-import { questionApi } from '../../api/questionDataApi';
-import { GET_DATA_100K1, GET_DATA_REQUESTED_100K1, SET_LOADING_100K1 } from '../reducers/questionsReducer';
+import { call, put, takeLatest } from "redux-saga/effects";
+import { questionApi } from "../../api/questionDataApi";
+import {
+  GET_DATA_100K1,
+  GET_DATA_REQUESTED_100K1,
+  SET_LOADING_100K1,
+} from "../reducers/questionsReducer";
 
 function* fetchQuestions() {
   try {

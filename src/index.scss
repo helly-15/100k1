@@ -1,24 +1,29 @@
 @import "css/Palette";
 @import "css/Buttons";
-@import url('https://fonts.googleapis.com/css?family=Montserrat:900');
+@import url("https://fonts.googleapis.com/css?family=Montserrat:900");
 
 body {
   margin: 0;
   //font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
   //  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
   //  sans-serif;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 100%;
   background-color: $backroundcolor;
   color: $textcolor;
-  background-image: linear-gradient(225deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%);
+  background-image: linear-gradient(
+    225deg,
+    #ff3cac 0%,
+    #784ba0 50%,
+    #2b86c5 100%
+  );
 }
 #root {
   min-height: 100vh;
 }
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }

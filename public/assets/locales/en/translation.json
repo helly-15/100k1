@@ -1,11 +1,11 @@
 {
-      "signup": "Sign up",
-      "login": "Log in",
-      "simple": "Simple game",
-      "double": "Double game",
-      "triple": "Triple game",
-      "viceversa": "Reverse game",
-      "big": "Big game",
-      "title": "Games for friends",
-      "chooseround": "Choose round"
+  "signup": "Sign up",
+  "login": "Log in",
+  "simple": "Simple game",
+  "double": "Double game",
+  "triple": "Triple game",
+  "viceversa": "Reverse game",
+  "big": "Big game",
+  "title": "Games for friends",
+  "chooseround": "Choose round"
 }

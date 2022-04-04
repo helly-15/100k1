@@ -1,15 +1,19 @@
-import './MistakesCounter.scss';
-import React, { useEffect, useState } from 'react';
+import "./MistakesCounter.scss";
+import React, { useEffect, useState } from "react";
 
-export const classnameRoot = 'mistakes-counter';
+export const classnameRoot = "mistakes-counter";
 const numberOfMistakes = 3;
 
 interface IMistakesCounterProps {
-    roundNumber: number,
+  roundNumber: number;
 }
 
-export const MistakesCounter: React.FC<IMistakesCounterProps> = ({ roundNumber }) => {
-  const [clickedMistakesIndexes, setClickedMistakesIndexes] = useState<number[]>([]);
+export const MistakesCounter: React.FC<IMistakesCounterProps> = ({
+  roundNumber,
+}) => {
+  const [clickedMistakesIndexes, setClickedMistakesIndexes] = useState<
+    number[]
+  >([]);
 
   useEffect(() => {
     setClickedMistakesIndexes([]);
@@ -18,27 +22,27 @@ export const MistakesCounter: React.FC<IMistakesCounterProps> = ({ roundNumber }
   return (
     <div className={classnameRoot}>
       <div className={`${classnameRoot}__round-icon`}>
-        { Number(roundNumber) !== 3 ? roundNumber + 1 : '?' }
+        {Number(roundNumber) !== 3 ? roundNumber + 1 : "?"}
       </div>
 
-      { [...Array(numberOfMistakes)].map((_mistakeButton, index) => (
+      {[...Array(numberOfMistakes)].map((_mistakeButton, index) => (
         <button
           type="button"
-          className={clickedMistakesIndexes.includes(index)
-            ? `${classnameRoot}__cross-icon ${classnameRoot}__cross-icon_mistake`
-            : `${classnameRoot}__cross-icon ${classnameRoot}__cross-icon_regular`}
+          className={
+            clickedMistakesIndexes.includes(index)
+              ? `${classnameRoot}__cross-icon ${classnameRoot}__cross-icon_mistake`
+              : `${classnameRoot}__cross-icon ${classnameRoot}__cross-icon_regular`
+          }
           onClick={() => {
             setClickedMistakesIndexes([...clickedMistakesIndexes, index]);
-            const incorrectAnswerSound = new Audio('/100-k-1-wrong-answer.mp3');
+            const incorrectAnswerSound = new Audio("/100-k-1-wrong-answer.mp3");
             incorrectAnswerSound.play();
           }}
         >
-          {' '}
-          X
-          {' '}
+          {" "}
+          X{" "}
         </button>
-      )) }
-
+      ))}
     </div>
   );
 };
