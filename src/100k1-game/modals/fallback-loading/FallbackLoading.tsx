@@ -8,7 +8,11 @@ const classnameRoot = "fallback-loading";
 export const FallbackLoading: React.FC = () => (
   <div className={classnameRoot}>
     <div className={`${classnameRoot}__image-wrapper`}>
-      <Lottie className={`${classnameRoot}__image`} animationData={loading} />
+      <Lottie
+        className={`${classnameRoot}__image`}
+        animationData={loading}
+        loop
+      />
     </div>
   </div>
 );

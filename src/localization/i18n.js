@@ -14,7 +14,7 @@ export default i18n
       escapeValue: false,
     },
     backend: {
-      loadPath: "../assets/locales/{{lng}}/translation.json",
+      loadPath: "/assets/locales/{{lng}}/translation.json",
     },
     // resources: {
     //   en: {

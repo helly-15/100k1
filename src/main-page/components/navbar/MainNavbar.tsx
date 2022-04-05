@@ -23,7 +23,7 @@ export const MainNavbar: React.FC = () => {
         <li className={`${classnameRoot}__personal-settings_lang`}>
           <img
             className={`${classnameRoot}__language_img`}
-            src="../planet.svg"
+            src="/planet.svg"
             alt="language"
           />
           <ul>
