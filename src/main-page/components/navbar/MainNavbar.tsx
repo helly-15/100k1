@@ -2,6 +2,8 @@ import React from "react";
 import "./MainNavbar.scss";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { CHANGE_LOCALE } from "../../../redux-state/reducers/localeReducer";
 
 const classnameRoot = "main-navbar";
 
@@ -12,7 +14,12 @@ const lngs: Lngs = {
   ru: { nativeName: "Рус" },
 };
 
-export const MainNavbar: React.FC = () => {
+interface IMainNavbarProps {
+  setLocale: (locale: string) => void;
+}
+export const MainNavbarComponent: React.FC<IMainNavbarProps> = ({
+  setLocale,
+}) => {
   const { t, i18n } = useTranslation();
   return (
     <div className={`${classnameRoot}__wrapper`}>
@@ -32,7 +39,10 @@ export const MainNavbar: React.FC = () => {
                 className={`${classnameRoot}__personal-settings_lang_option`}
                 type="button"
                 key={lng}
-                onClick={() => i18n.changeLanguage(lng)}
+                onClick={() => {
+                  i18n.changeLanguage(lng);
+                  setLocale(lng);
+                }}
                 onKeyDown={(e) => {
                   if (e.key === "Enter") {
                     i18n.changeLanguage(lng);
@@ -54,3 +64,12 @@ export const MainNavbar: React.FC = () => {
     </div>
   );
 };
+
+export const MainNavbar = connect(
+  () => ({}),
+  (dispatch) => ({
+    setLocale: (locale: string) => {
+      dispatch({ type: CHANGE_LOCALE, payload: locale });
+    },
+  })
+)(MainNavbarComponent);

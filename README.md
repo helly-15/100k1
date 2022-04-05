@@ -11,12 +11,17 @@ for starting the project
 
 for running tests
 
-## used techs
+## Used techs
 
 1. TypeScript
-2. ESLint
+2. ESLint + Prettier
 3. Jest/React testing library (experiment)
 4. SASS
 5. Lottie animation
 6. i18next for translation
 7. Redux Saga
+
+## Store info 
+1) choose provider in dev tools tab 'components'
+2) type $r.props.store.getState() in console
+
