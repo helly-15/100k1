@@ -3,12 +3,14 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { withErrorBoundary } from "react-error-boundary";
 import { useTranslation } from "react-i18next";
+import { useParams } from "react-router-dom";
 import { Navbar } from "./components/navbar/Navbar";
 import { RoundWrapperConnected } from "./screen/round-wrapper/RoundWrapper";
 import { FallbackLoading } from "./modals/fallback-loading/FallbackLoading";
 import {
   GET_DATA_REQUESTED_100K1,
   SET_LOADING_100K1,
+  SET_ROUNDNUMBER_100K1,
 } from "../redux-state/reducers/questionsReducer";
 import { IStoreState } from "../redux-state/interfaces/IStore";
 import { IQuestionsData } from "../redux-state/interfaces/IQuestion";
@@ -17,7 +19,7 @@ import { ErrorBoundary } from "../main-page/reuse-components/error-boundary/Erro
 interface IAppComponentStateProps {
   questionsData: IQuestionsData;
   isQuestionsLoading: boolean;
-  requestDataFetch: () => void;
+  requestDataFetch: (round: number) => void;
 }
 
 export const App100k1Component: React.FC<IAppComponentStateProps> = ({
@@ -27,6 +29,7 @@ export const App100k1Component: React.FC<IAppComponentStateProps> = ({
 }) => {
   const [roundNumber, setRoundNumber] = useState<number>(0);
   const { t } = useTranslation();
+  const { round }: { round: string } = useParams();
   const roundsNames = [
     t("simple"),
     t("double"),
@@ -35,7 +38,7 @@ export const App100k1Component: React.FC<IAppComponentStateProps> = ({
     t("big"),
   ];
   useEffect(() => {
-    requestDataFetch();
+    requestDataFetch(Number(round));
   }, []);
   return (
     <div className="App">
@@ -68,9 +71,10 @@ export const App100k1: React.FC = connect(
     isQuestionsLoading: state.questionsData.loading,
   }),
   (dispatch) => ({
-    requestDataFetch: () => {
+    requestDataFetch: (roundNumber: number) => {
       dispatch({ type: GET_DATA_REQUESTED_100K1 });
       dispatch({ type: SET_LOADING_100K1, payload: true });
+      dispatch({ type: SET_ROUNDNUMBER_100K1, payload: roundNumber });
     },
   })
 )(withErrorBoundaryApp100k1);

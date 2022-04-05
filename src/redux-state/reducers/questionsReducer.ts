@@ -4,11 +4,13 @@ import { IQuestions, IQuestionsData } from "../interfaces/IQuestion";
 export const GET_DATA_100K1 = "100K1/GET_DATA";
 export const GET_DATA_REQUESTED_100K1 = "100K1/GET_DATA_REQUESTED";
 export const SET_LOADING_100K1 = "100K1/SET_LOADING";
+export const SET_ROUNDNUMBER_100K1 = "100K1/SET_ROUNDNUMBER";
 
 export function questionsReducer(
   state: IQuestions = {
     questionsData: dataFromStore,
     loading: false,
+    round: 0,
   },
   action: { type: string; payload: IQuestionsData }
 ) {
@@ -23,6 +25,11 @@ export function questionsReducer(
       return {
         ...state,
         loading: action.payload,
+      };
+    case SET_ROUNDNUMBER_100K1:
+      return {
+        ...state,
+        round: action.payload,
       };
 
     default:

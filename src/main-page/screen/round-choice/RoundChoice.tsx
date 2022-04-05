@@ -36,6 +36,7 @@ const RoundChoiceComponent: React.FC<IRoundChoice> = ({ gameTitles }) => {
                 <div className={`${classnameRoot}__dot`} />
                 <div className={`${classnameRoot}__dot`} />
               </div>
+
               <span>{index + 1}</span>
             </Link>
           </div>

@@ -5,7 +5,7 @@ import { MistakesCounter } from "../mistakes-counter/MistakesCounter";
 import { RepliesList } from "../replies-list/RepliesList";
 
 const classnameRoot = "questions-board";
-// toDo move to redux
+
 export const routePaths = [
   "/100k1/simplegame",
   "/100k1/doublegame",

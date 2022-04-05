@@ -23,7 +23,7 @@ export const Main: React.FC<IMainProps> = () => (
           <Route path="/gameTitle/:gameTitle/roundchoice">
             <RoundChoice />
           </Route>
-          <Route path="/100k1">
+          <Route path="/100k1/round/:round">
             <App100k1 />
           </Route>
         </Switch>

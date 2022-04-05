@@ -10,4 +10,5 @@ export interface IQuestionsData {
 export interface IQuestions {
   questionsData: IQuestionsData;
   loading: boolean;
+  round: number;
 }
