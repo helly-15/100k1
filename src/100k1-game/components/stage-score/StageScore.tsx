@@ -1,29 +1,29 @@
-import "./RoundScore.scss";
+import "./StageScore.scss";
 import React from "react";
 
-const classnameRoot = "round-score";
+const classnameRoot = "stage-score";
 
-interface IRoundScoreProps {
+interface IStageScoreProps {
   onSetTeamScore: (arg0: number) => void;
   resetTotalScore: (arg0: number) => void;
-  roundNumber?: number;
+  stageNumber?: number;
   score: number;
   totalScore?: number;
   teamScore?: number;
 }
 
-export const RoundScore: React.FC<IRoundScoreProps> = ({
+export const StageScore: React.FC<IStageScoreProps> = ({
   onSetTeamScore,
   resetTotalScore,
-  roundNumber = 0,
+  stageNumber = 0,
   score,
   totalScore = 0,
   teamScore = 0,
 }) => {
-  const coefficientOfRoundMultiplication =
-    roundNumber === 1 ? 2 : roundNumber === 2 ? 3 : 1;
+  const coefficientOfStageMultiplication =
+    stageNumber === 1 ? 2 : stageNumber === 2 ? 3 : 1;
   const setTeamScore = () => {
-    onSetTeamScore(totalScore * coefficientOfRoundMultiplication + teamScore);
+    onSetTeamScore(totalScore * coefficientOfStageMultiplication + teamScore);
     resetTotalScore(0);
   };
   const scoreGainedSound = new Audio("/round.mp3");

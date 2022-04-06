@@ -5,19 +5,19 @@ const classnameRoot = "replies-list";
 
 interface IRepliesListProps {
   guessedReplies: Array<number>;
-  repliesForRound: Array<string>;
-  setRepliesForRoundOpened: (index: number) => void;
+  repliesForStage: Array<string>;
+  setRepliesForStageOpened: (index: number) => void;
   repliesScores: Array<string>;
 }
 
 export const RepliesList: React.FC<IRepliesListProps> = ({
   guessedReplies,
-  repliesForRound,
-  setRepliesForRoundOpened,
+  repliesForStage,
+  setRepliesForStageOpened,
   repliesScores,
 }) => (
   <div className={classnameRoot}>
-    {repliesForRound.map((reply, index) => {
+    {repliesForStage.map((reply, index) => {
       const isReplyGuessed = guessedReplies.includes(index);
       return (
         <button
@@ -28,7 +28,7 @@ export const RepliesList: React.FC<IRepliesListProps> = ({
           onClick={() => {
             const replyAnswerSound = new Audio("/line_open.mp3");
             replyAnswerSound.play();
-            setRepliesForRoundOpened(index);
+            setRepliesForStageOpened(index);
           }}
           key={reply}
         >

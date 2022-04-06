@@ -5,7 +5,7 @@ import { withErrorBoundary } from "react-error-boundary";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 import { Navbar } from "./components/navbar/Navbar";
-import { RoundWrapperConnected } from "./screen/round-wrapper/RoundWrapper";
+import { StageWrapperConnected } from "./screen/stage-wrapper/StageWrapper";
 import { FallbackLoading } from "./modals/fallback-loading/FallbackLoading";
 import {
   GET_DATA_REQUESTED_100K1,
@@ -19,18 +19,22 @@ import { ErrorBoundary } from "../main-page/reuse-components/error-boundary/Erro
 interface IAppComponentStateProps {
   questionsData: IQuestionsData;
   isQuestionsLoading: boolean;
-  requestDataFetch: (round: number) => void;
+  locale: string;
+  requestDataFetch: () => void;
+  setRoundNumber: (round: number) => void;
 }
 
 export const App100k1Component: React.FC<IAppComponentStateProps> = ({
   questionsData,
   isQuestionsLoading,
   requestDataFetch,
+  setRoundNumber,
+  // locale,
 }) => {
-  const [roundNumber, setRoundNumber] = useState<number>(0);
+  const [stageNumber, setStageNumber] = useState<number>(0);
   const { t } = useTranslation();
   const { round }: { round: string } = useParams();
-  const roundsNames = [
+  const stageNames = [
     t("simple"),
     t("double"),
     t("triple"),
@@ -38,7 +42,11 @@ export const App100k1Component: React.FC<IAppComponentStateProps> = ({
     t("big"),
   ];
   useEffect(() => {
-    requestDataFetch(Number(round));
+    // if(locale === 'ru' && Number(round)===0) {
+    requestDataFetch();
+    // }
+
+    setRoundNumber(Number(round));
   }, []);
   return (
     <div className="App">
@@ -47,13 +55,13 @@ export const App100k1Component: React.FC<IAppComponentStateProps> = ({
       ) : (
         <>
           <Navbar
-            roundsNames={roundsNames}
-            setRoundNumber={setRoundNumber}
-            activeRoundNumber={roundNumber}
+            stageNames={stageNames}
+            setStageNumber={setStageNumber}
+            activeStageNumber={stageNumber}
           />
-          <RoundWrapperConnected
+          <StageWrapperConnected
             data={questionsData}
-            roundNumber={roundNumber}
+            stageNumber={stageNumber}
           />
         </>
       )}
@@ -69,11 +77,14 @@ export const App100k1: React.FC = connect(
   (state: IStoreState) => ({
     questionsData: state.questionsData.questionsData,
     isQuestionsLoading: state.questionsData.loading,
+    locale: state.locale.locale,
   }),
   (dispatch) => ({
-    requestDataFetch: (roundNumber: number) => {
+    requestDataFetch: () => {
       dispatch({ type: GET_DATA_REQUESTED_100K1 });
       dispatch({ type: SET_LOADING_100K1, payload: true });
+    },
+    setRoundNumber: (roundNumber: number) => {
       dispatch({ type: SET_ROUNDNUMBER_100K1, payload: roundNumber });
     },
   })

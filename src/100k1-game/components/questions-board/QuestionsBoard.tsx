@@ -7,30 +7,30 @@ import { RepliesList } from "../replies-list/RepliesList";
 const classnameRoot = "questions-board";
 
 export const routePaths = [
-  "/100k1/simplegame",
-  "/100k1/doublegame",
-  "/100k1/triplegame",
-  "/100k1/gameviceversa",
-  "/100k1/biggame",
+  "simplegame",
+  "doublegame",
+  "triplegame",
+  "gameviceversa",
+  "biggame",
 ];
 
 interface IQuestionsBoardProps {
   setTotalScore: (arg0: number) => void;
-  roundNumber: number;
+  stageNumber: number;
   correctReplies: string[];
   repliesScores: string[];
   totalScore: number;
 }
 
 export const QuestionsBoard: React.FC<IQuestionsBoardProps> = ({
-  roundNumber,
+  stageNumber,
   correctReplies,
   repliesScores,
   totalScore,
   setTotalScore,
 }) => {
   const [guessedReplies, setGuessedReplies] = useState<number[]>([]);
-  const [repliesForRound, setRepliesForRound] = useState<string[]>([
+  const [repliesForStage, setRepliesForStage] = useState<string[]>([
     "1",
     "2",
     "3",
@@ -39,11 +39,11 @@ export const QuestionsBoard: React.FC<IQuestionsBoardProps> = ({
     "6",
   ]);
 
-  const setRepliesForRoundOpened = (index: number) => {
-    setRepliesForRound([
-      ...repliesForRound.slice(0, index),
+  const setRepliesForStageOpened = (index: number) => {
+    setRepliesForStage([
+      ...repliesForStage.slice(0, index),
       correctReplies[index],
-      ...repliesForRound.slice(index + 1),
+      ...repliesForStage.slice(index + 1),
     ]);
     setGuessedReplies([...guessedReplies, index]);
     setTotalScore(totalScore + Number(repliesScores[index]));
@@ -51,25 +51,25 @@ export const QuestionsBoard: React.FC<IQuestionsBoardProps> = ({
 
   useEffect(() => {
     setGuessedReplies([]);
-    setRepliesForRound(["1", "2", "3", "4", "5", "6"]);
-  }, [roundNumber]);
+    setRepliesForStage(["1", "2", "3", "4", "5", "6"]);
+  }, [stageNumber]);
   const repliesListComponent = (
     <RepliesList
-      repliesForRound={repliesForRound}
-      setRepliesForRoundOpened={setRepliesForRoundOpened}
+      repliesForStage={repliesForStage}
+      setRepliesForStageOpened={setRepliesForStageOpened}
       guessedReplies={guessedReplies}
       repliesScores={repliesScores}
     />
   );
   return (
     <div className={classnameRoot}>
-      <MistakesCounter roundNumber={roundNumber} />
+      <MistakesCounter stageNumber={stageNumber} />
       <Switch>
         {["/100k1/", ...routePaths].map((route) => (
           <Route path={route} render={() => repliesListComponent} />
         ))}
       </Switch>
-      <MistakesCounter roundNumber={roundNumber} />
+      <MistakesCounter stageNumber={stageNumber} />
     </div>
   );
 };

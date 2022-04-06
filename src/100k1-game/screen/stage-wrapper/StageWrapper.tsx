@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import { RoundScore } from "../../components/round-score/RoundScore";
+import { StageScore } from "../../components/stage-score/StageScore";
 import { QuestionsBoard } from "../../components/questions-board/QuestionsBoard";
-import "./RoundWrapper.scss";
+import "./StageWrapper.scss";
 
 import { IQuestionsData } from "../../../redux-state/interfaces/IQuestion";
 
@@ -13,14 +13,14 @@ import {
   CHANGE_TOTAL_SCORE,
 } from "../../../redux-state/reducers/scoreReducer";
 
-const classnameRoot = "round-wrapper";
+const classnameRoot = "stage-wrapper";
 
-interface IRoundWrapperOwnProps {
+interface IStageWrapperOwnProps {
   data: IQuestionsData;
-  roundNumber: number;
+  stageNumber: number;
 }
 
-interface IRoundWrapperStateProps {
+interface IStageWrapperStateProps {
   totalScore: number;
   leftTeamScore: number;
   rightTeamScore: number;
@@ -29,13 +29,13 @@ interface IRoundWrapperStateProps {
   setRightTeamScore: (arg0: number) => void;
 }
 
-interface IRoundWrapperProps
-  extends IRoundWrapperOwnProps,
-    IRoundWrapperStateProps {}
+interface IStageWrapperProps
+  extends IStageWrapperOwnProps,
+    IStageWrapperStateProps {}
 
-export const RoundWrapper: React.FC<IRoundWrapperProps> = ({
+export const StageWrapper: React.FC<IStageWrapperProps> = ({
   data,
-  roundNumber,
+  stageNumber,
   totalScore,
   setTotalScore,
   leftTeamScore,
@@ -43,10 +43,10 @@ export const RoundWrapper: React.FC<IRoundWrapperProps> = ({
   rightTeamScore,
   setRightTeamScore,
 }) => {
-  const questionText = data.questions[roundNumber].title || "Большая игра";
+  const questionText = data.questions[stageNumber].title || "Большая игра";
   return (
     <main className={classnameRoot}>
-      <RoundScore
+      <StageScore
         score={totalScore}
         resetTotalScore={setTotalScore}
         onSetTeamScore={setTotalScore}
@@ -55,20 +55,20 @@ export const RoundWrapper: React.FC<IRoundWrapperProps> = ({
 
       <div className={`${classnameRoot}__questions-board_wrapper`}>
         <aside className={`${classnameRoot}__questions-board_team`}>
-          <RoundScore
+          <StageScore
             score={leftTeamScore}
             onSetTeamScore={setLeftTeamScore}
             totalScore={totalScore}
             teamScore={leftTeamScore}
             resetTotalScore={setTotalScore}
-            roundNumber={roundNumber}
+            stageNumber={stageNumber}
           />
         </aside>
-        {Number(roundNumber) < 4 ? (
+        {Number(stageNumber) < 4 ? (
           <QuestionsBoard
-            roundNumber={Number(roundNumber)}
+            stageNumber={Number(stageNumber)}
             correctReplies={
-              data.questions[roundNumber].correctReplies || [
+              data.questions[stageNumber].correctReplies || [
                 "1",
                 "2",
                 "3",
@@ -78,7 +78,7 @@ export const RoundWrapper: React.FC<IRoundWrapperProps> = ({
               ]
             }
             repliesScores={
-              data.questions[roundNumber].repliesScores || [
+              data.questions[stageNumber].repliesScores || [
                 "1",
                 "2",
                 "3",
@@ -92,20 +92,20 @@ export const RoundWrapper: React.FC<IRoundWrapperProps> = ({
           />
         ) : (
           <img
-            className="round-wrapper__santa"
+            className="stage-wrapper__santa"
             src="/santa.png"
             alt="new year fireworks"
           />
         )}
 
         <aside className={`${classnameRoot}__questions-board_team`}>
-          <RoundScore
+          <StageScore
             score={rightTeamScore}
             onSetTeamScore={setRightTeamScore}
             totalScore={Number(totalScore)}
             teamScore={Number(rightTeamScore)}
             resetTotalScore={setTotalScore}
-            roundNumber={roundNumber}
+            stageNumber={stageNumber}
           />
         </aside>
       </div>
@@ -113,7 +113,7 @@ export const RoundWrapper: React.FC<IRoundWrapperProps> = ({
   );
 };
 
-export const RoundWrapperConnected: React.FC<IRoundWrapperOwnProps> = connect(
+export const StageWrapperConnected: React.FC<IStageWrapperOwnProps> = connect(
   (state: IStoreState) => ({
     totalScore: state.score.totalScore,
     leftTeamScore: state.score.leftTeamScore,
@@ -130,4 +130,4 @@ export const RoundWrapperConnected: React.FC<IRoundWrapperOwnProps> = connect(
       dispatch({ type: CHANGE_RIGHT_TEAM_SCORE, payload: score });
     },
   })
-)(RoundWrapper);
+)(StageWrapper);

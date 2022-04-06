@@ -5,11 +5,11 @@ export const classnameRoot = "mistakes-counter";
 const numberOfMistakes = 3;
 
 interface IMistakesCounterProps {
-  roundNumber: number;
+  stageNumber: number;
 }
 
 export const MistakesCounter: React.FC<IMistakesCounterProps> = ({
-  roundNumber,
+  stageNumber,
 }) => {
   const [clickedMistakesIndexes, setClickedMistakesIndexes] = useState<
     number[]
@@ -17,12 +17,12 @@ export const MistakesCounter: React.FC<IMistakesCounterProps> = ({
 
   useEffect(() => {
     setClickedMistakesIndexes([]);
-  }, [roundNumber]);
+  }, [stageNumber]);
 
   return (
     <div className={classnameRoot}>
       <div className={`${classnameRoot}__round-icon`}>
-        {Number(roundNumber) !== 3 ? roundNumber + 1 : "?"}
+        {Number(stageNumber) !== 3 ? stageNumber + 1 : "?"}
       </div>
 
       {[...Array(numberOfMistakes)].map((_mistakeButton, index) => (

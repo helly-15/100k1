@@ -1,52 +1,53 @@
 import "./Navbar.scss";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import React from "react";
 import { routePaths } from "../questions-board/QuestionsBoard";
 
 const classnameRoot = "navbar";
 
 interface INavbarProps {
-  activeRoundNumber: number;
-  roundsNames: Array<string>;
-  setRoundNumber: React.Dispatch<React.SetStateAction<number>>;
+  activeStageNumber: number;
+  stageNames: Array<string>;
+  setStageNumber: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export const Navbar: React.FC<INavbarProps> = ({
-  activeRoundNumber,
-  roundsNames,
-  setRoundNumber,
+  activeStageNumber,
+  stageNames,
+  setStageNumber,
 }) => {
-  const roundOneSound = new Audio("/simple-game.mp3");
-  const roundTwoSound = new Audio("/double-game.mp3");
-  const roundThreeSound = new Audio("/triple-game.mp3");
-  const roundFourSound = new Audio("/game-vice-versa.mp3");
-  const roundFiveSound = new Audio("/big-game.mp3");
+  const stageOneSound = new Audio("/simple-game.mp3");
+  const stageTwoSound = new Audio("/double-game.mp3");
+  const stageThreeSound = new Audio("/triple-game.mp3");
+  const stageFourSound = new Audio("/game-vice-versa.mp3");
+  const stageFiveSound = new Audio("/big-game.mp3");
+  const { round }: { round: string } = useParams();
   const audioArray = [
-    roundOneSound,
-    roundTwoSound,
-    roundThreeSound,
-    roundFourSound,
-    roundFiveSound,
+    stageOneSound,
+    stageTwoSound,
+    stageThreeSound,
+    stageFourSound,
+    stageFiveSound,
   ];
 
   return (
     <nav className={classnameRoot}>
       <ul className={`${classnameRoot}__tab-wrapper`}>
-        {roundsNames.map((round, index) => (
+        {stageNames.map((stage, index) => (
           <Link
             className={`${classnameRoot}__tab ${
-              +activeRoundNumber === +index
+              +activeStageNumber === +index
                 ? `${classnameRoot}__tab_active`
                 : ""
             }`}
-            key={round}
+            key={stage}
             onClick={() => {
-              setRoundNumber(index);
+              setStageNumber(index);
               audioArray[index].play();
             }}
-            to={`${routePaths[index]}`}
+            to={`/100k1/round/${round}/${routePaths[index]}`}
           >
-            {round}
+            {stage}
           </Link>
         ))}
       </ul>
