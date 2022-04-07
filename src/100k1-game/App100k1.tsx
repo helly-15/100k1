@@ -29,7 +29,7 @@ export const App100k1Component: React.FC<IAppComponentStateProps> = ({
   isQuestionsLoading,
   requestDataFetch,
   setRoundNumber,
-  // locale,
+  locale,
 }) => {
   const [stageNumber, setStageNumber] = useState<number>(0);
   const { t } = useTranslation();
@@ -42,10 +42,9 @@ export const App100k1Component: React.FC<IAppComponentStateProps> = ({
     t("big"),
   ];
   useEffect(() => {
-    // if(locale === 'ru' && Number(round)===0) {
-    requestDataFetch();
-    // }
-
+    if (locale === "ru" && Number(round) === 0) {
+      requestDataFetch();
+    }
     setRoundNumber(Number(round));
   }, []);
   return (

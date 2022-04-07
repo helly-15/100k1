@@ -12,3 +12,7 @@ export interface IQuestions {
   loading: boolean;
   round: number;
 }
+
+export interface ILocaleQuestionsData {
+  [id: number]: IQuestionsData;
+}

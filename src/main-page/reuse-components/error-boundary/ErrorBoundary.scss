@@ -6,6 +6,9 @@
   &__image {
     margin-bottom: 40px;
     width: 40%;
+    svg {
+      max-height: 60vh;
+    }
   }
   &__button {
   }
