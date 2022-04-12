@@ -20,6 +20,7 @@ for running tests
 5. Lottie animation
 6. i18next for translation
 7. Redux Saga
+8. Framer-motion animation
 
 ## Store info 
 1) choose provider in dev tools tab 'components'

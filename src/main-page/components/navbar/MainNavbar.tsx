@@ -3,6 +3,7 @@ import "./MainNavbar.scss";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { motion } from "framer-motion";
 import { CHANGE_LOCALE } from "../../../redux-state/reducers/localeReducer";
 
 const classnameRoot = "main-navbar";
@@ -17,21 +18,29 @@ const lngs: Lngs = {
 interface IMainNavbarProps {
   setLocale: (locale: string) => void;
 }
+
 export const MainNavbarComponent: React.FC<IMainNavbarProps> = ({
   setLocale,
 }) => {
   const { t, i18n } = useTranslation();
   return (
-    <div className={`${classnameRoot}__wrapper`}>
+    <header className={`${classnameRoot}__wrapper`}>
       <Link className={`${classnameRoot}__logo`} to="/">
+        <motion.img
+          className={`${classnameRoot}__logo_img`}
+          src="/dice-icon.svg"
+          alt="language"
+          whileHover={{ scale: 1.2 }}
+        />
         <h1>{t("title")} </h1>
       </Link>
       <ul className={`${classnameRoot}__personal-settings`}>
         <li className={`${classnameRoot}__personal-settings_lang`}>
-          <img
+          <motion.img
             className={`${classnameRoot}__language_img`}
             src="/planet.svg"
             alt="language"
+            whileHover={{ scale: 1.2 }}
           />
           <ul>
             {Object.keys(lngs).map((lng: string) => (
@@ -54,14 +63,20 @@ export const MainNavbarComponent: React.FC<IMainNavbarProps> = ({
             ))}
           </ul>
         </li>
-        <li className={`${classnameRoot}__personal-settings_login`}>
+        <motion.li
+          whileHover={{ scale: 1.2 }}
+          className={`${classnameRoot}__personal-settings_login`}
+        >
           {t("login")}
-        </li>
-        <li className={`${classnameRoot}__personal-settings_sign`}>
+        </motion.li>
+        <motion.li
+          whileHover={{ scale: 1.2 }}
+          className={`${classnameRoot}__personal-settings_sign`}
+        >
           {t("signup")}
-        </li>
+        </motion.li>
       </ul>
-    </div>
+    </header>
   );
 };
 

@@ -1,13 +1,17 @@
 @import "../../../css/Palette";
 .main-navbar {
   &__logo {
+    display: flex;
     flex: 1;
     text-decoration: none;
     color: $textcolor;
-    display: block;
     text-align: center;
     h1{
       font-weight: 900;
+    }
+    &_img {
+      max-width: 13%;
+      margin: 0 20px;
     }
 
   }
