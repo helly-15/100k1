@@ -59,7 +59,7 @@ export const gameTitles = [
 ];
 export function gameTitlesReducer(
   state: IGameTitles = gameTitles,
-  action: { type: string; payload: string }
+  action: { type: string; payload?: string }
 ) {
   switch (action.type) {
     default:

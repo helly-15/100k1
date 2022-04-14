@@ -20,7 +20,9 @@ const cardAnimation = {
   visible: (custom: number) => ({
     opacity: 1,
     x: 0,
-    transition: { delay: custom * 0.2 },
+    transition: { delay: custom * 0.2,
+      ease: "easeIn",
+    },
   }),
 };
 const MotionLink = motion(Link);

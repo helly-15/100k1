@@ -3,16 +3,22 @@ import ReactDOM from "react-dom";
 import "./index.scss";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
+import {PersistGate} from "redux-persist/integration/react"
 import reportWebVitals from "./reportWebVitals";
-import { store } from "./redux-state/store/store";
+import { store, persistor } from "./redux-state/store/store";
 import { Main } from "./main-page/screen/main/Main";
 import "./localization/i18n";
+import {FallbackLoading} from "./100k1-game/modals/fallback-loading/FallbackLoading";
+
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Provider store={store}>
-        <Main />
+          <PersistGate loading = {<FallbackLoading/>} persistor = {persistor}>
+              <Main />
+          </PersistGate>
+
       </Provider>
     </BrowserRouter>
   </React.StrictMode>,

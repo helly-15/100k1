@@ -31,6 +31,15 @@ export const MainNavbarComponent: React.FC<IMainNavbarProps> = ({
           src="/dice-icon.svg"
           alt="language"
           whileHover={{ scale: 1.2 }}
+          animate = {{rotate:360}}
+          transition = {{
+            repeat: Infinity,
+            repeatType: 'reverse',
+            duration: 5,
+            repeatDelay:1,
+            type: "spring",
+          }
+          }
         />
         <h1>{t("title")} </h1>
       </Link>
