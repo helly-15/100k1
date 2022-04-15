@@ -1,0 +1,28 @@
+.final {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.final-text {
+    font-weight: 700;
+}
+
+.final-text_lion {
+    font-weight: normal;
+}
+.final-wrapper {
+    width: 100%;
+}
+
+.final-wrapper_raw {
+    display: flex;
+    justify-content: center;
+}
+
+.final-wrapper_raw img {
+    max-width: 45%;
+    max-height: 25vh;
+
+    border: 6px solid brown;
+    margin: 5px;
+}

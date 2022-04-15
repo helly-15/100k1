@@ -1,0 +1,26 @@
+.score {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    text-align: center;
+
+}
+
+.score__item {
+    padding: 10px;
+    color: aliceblue;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.score__item_score {
+    background-color: aliceblue;
+    color: brown;
+    border-radius: 20px;
+    cursor: pointer;
+    width: 100px;
+}
