@@ -20,4 +20,5 @@
     padding: 0 10px;
     flex: 1;
     cursor: pointer;
+    font-size: calc(10px + 2vmin);
 }

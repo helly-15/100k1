@@ -1,14 +1,17 @@
 import React from "react";
+import {useTranslation} from "react-i18next";
 import kot from "../assets/chernycot.png";
 import labuten from "../assets/labuten.png";
 import komarovo from "../assets/komarovo.png";
 import orientir from "../assets/vizuorientir.png";
 import './Final.css';
 
-export const Final:React.FC = () => (
+export const Final:React.FC = () => {
+    const { t } = useTranslation();
+    return (
         <div className="final">
             <p className="final-text" >
-                Финальный раунд : угадайте мелодию по картинкам!
+                {t("finalroundguessfrompictures")}
                 <span className="final-text_lion">&#129409;</span></p>
             <div className="final-wrapper">
                 <div className="final-wrapper_raw">
@@ -21,4 +24,4 @@ export const Final:React.FC = () => (
                 </div>
             </div>
         </div>
-    )
+    )}

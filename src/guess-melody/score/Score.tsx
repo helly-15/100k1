@@ -1,9 +1,10 @@
 import './Score.css';
 import React, { useState } from "react";
-import { data } from '../data';
+import {useTranslation} from "react-i18next";
 
 const rootClassname = 'score';
 const right = new Audio("/game-sounds/right.mp3");
+const players= ['homersimpson', 'spongebob', 'ericcartman','pluto'];
 
 export const ScoreCounter:React.FC=()=> {
     const [score, setScore] = useState(0);
@@ -22,15 +23,15 @@ export const ScoreCounter:React.FC=()=> {
 }
 
 
-
-
-export const Score:React.FC=() => (
+export const Score:React.FC=() => {
+    const { t } = useTranslation();
+    return (
         <div className={ rootClassname }>
-            { data.players.map((player) => <div className={ `${rootClassname}__item` } key={ player }>
-                    { player }
+            { players.map((player) => <div className={ `${rootClassname}__item` } key={ player }>
+                {t(`${player}`)}
                     <ScoreCounter/>
                 </div>) }
         </div>
-    )
+    )}
 
 

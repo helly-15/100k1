@@ -1,20 +1,31 @@
 /* eslint-disable jsx-a11y/media-has-caption */
 import React, { useState } from 'react';
+import {connect} from "react-redux";
+import {useTranslation} from "react-i18next";
 import guessmelodylogo from './assets/guessmelodylogo.png';
+import guessmelodylogoen from './assets/guessmelodylogoen.png';
 import './GuessMelody.scss';
 import { Score } from "./score/Score";
 import { Board } from "./board/Board";
 import { data } from "./data";
 import { Final } from "./final/Final";
+import {IStoreState} from "../redux-state/interfaces/IStore";
+
+interface IGuessMelody {
+    locale: string;
+}
 
 const roundmusic = new Audio("/assets/guess-melody/game-sounds/round.mp3");
 
-export const GuessMelody = () => {
+export const GuessMelodyComponent:React.FC<IGuessMelody> = ({locale}) => {
     const [round, setRound] = useState(1);
+    const { t } = useTranslation();
+
     return (
         <div className="guess-melody">
             <header className="guess-melody-header">
-                                <img src={ guessmelodylogo } className="guess-melody-logo" alt="logo"/>
+                <img src={ locale === "en"?guessmelodylogoen:guessmelodylogo }
+                     className="guess-melody-logo" alt="logo"/>
                 {round===1? <audio src ="/assets/guess-melody/game-sounds/opening.mp3" autoPlay />:null}
                 { round !== 3 ? <Score/> : null }
                 {
@@ -28,18 +39,23 @@ export const GuessMelody = () => {
                         roundmusic.play();
                         setRound(1) }
                     }
-                        > Раунд 1</button>
+                        > {`${t(`${"round"}`)} 1`}</button>
                     <button className="guess-melody-button" type='button' onClick={ () => {
                         roundmusic.play();
                         setRound(2)
-                    } }> Раунд 2</button>
+                    } }> {`${t(`${"round"}`)} 2`}</button>
                     <button className="guess-melody-button" type='button' onClick={ () => {
                         roundmusic.play();
                         setRound(3)
-                    } }> Финал </button>
+                    } }> {t(`${"final"}`)} </button>
                 </div>
             </header>
         </div>
     );
 }
 
+export const GuessMelody = connect(
+    (state: IStoreState) => ({
+        locale: state.locale.locale,
+    }),
+)(GuessMelodyComponent);

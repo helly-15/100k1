@@ -7,5 +7,12 @@
   "viceversa": "Reverse game",
   "big": "Big game",
   "title": "Games for friends",
-  "chooseround": "Choose round"
+  "chooseround": "Choose round",
+  "homersimpson": "Homer Simpson",
+  "spongebob": "Sponge Bob",
+  "ericcartman": "Eric Cartman",
+  "pluto": "Pluto",
+  "round": "Round",
+  "final": "Final",
+  "finalroundguessfrompictures":"Final round: Guess the melody from the pictures!"
 }

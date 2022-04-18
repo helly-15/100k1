@@ -18,6 +18,8 @@
 }
 
 .score__item_score {
+    border: none;
+    font-weight: bold;
     background-color: aliceblue;
     color: brown;
     border-radius: 20px;
