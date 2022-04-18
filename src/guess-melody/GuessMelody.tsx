@@ -16,6 +16,7 @@ interface IGuessMelody {
 }
 
 const roundmusic = new Audio("/assets/guess-melody/game-sounds/round.mp3");
+const roundsNumbers = ['first', 'second','final']
 
 export const GuessMelodyComponent:React.FC<IGuessMelody> = ({locale}) => {
     const [round, setRound] = useState(1);
@@ -29,25 +30,17 @@ export const GuessMelodyComponent:React.FC<IGuessMelody> = ({locale}) => {
                 {round===1? <audio src ="/assets/guess-melody/game-sounds/opening.mp3" autoPlay />:null}
                 { round !== 3 ? <Score/> : null }
                 {
-                    round === 1 ? <Board data={ data.questions[0] } round={ round }/> :
-                        round === 2 ?
-                            <Board data={ data.questions[1] } round={ round }/> :
-                            <Final/>
+                    round !== 3 ? <Board data={ data.questions[round - 1] } round={ round }/> : <Final/>
                 }
                 <div className="guess-melody-button-wrapper">
-                    <button className="guess-melody-button" type='button' onClick={ () => {
-                        roundmusic.play();
-                        setRound(1) }
-                    }
-                        > {`${t(`${"round"}`)} 1`}</button>
-                    <button className="guess-melody-button" type='button' onClick={ () => {
-                        roundmusic.play();
-                        setRound(2)
-                    } }> {`${t(`${"round"}`)} 2`}</button>
-                    <button className="guess-melody-button" type='button' onClick={ () => {
-                        roundmusic.play();
-                        setRound(3)
-                    } }> {t(`${"final"}`)} </button>
+                    {roundsNumbers.map((roundNumber, index) => <button
+                        className="guess-melody-button" key = {roundNumber} type='button' onClick={ () => {
+                            roundmusic.play();
+                            setRound(index+1) }
+                        }> {index!==2? `${t(`${"round"}`)} ${index+1}`: t(`${"final"}`)}
+                        </button>
+
+                    )}
                 </div>
             </header>
         </div>
