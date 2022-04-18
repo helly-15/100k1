@@ -20,6 +20,7 @@
 .score__item_score {
     border: none;
     font-weight: bold;
+    font-size: calc(10px + 2vmin);
     background-color: aliceblue;
     color: brown;
     border-radius: 20px;
