@@ -8,6 +8,7 @@ import { FallbackLoading } from "../../../100k1-game/modals/fallback-loading/Fal
 import { RoundChoice } from "../round-choice/RoundChoice";
 import {ErrorBoundary} from "../../reuse-components/error-boundary/ErrorBoundary";
 import {GuessMelody} from "../../../guess-melody/GuessMelody";
+import {Login} from "../login/Login";
 
 const classnameRoot = "main";
 
@@ -30,6 +31,9 @@ export const Main: React.FC<IMainProps> = () => (
           </Route>
           <Route path="/guessmelody/round/:round">
             <GuessMelody />
+          </Route>
+          <Route path="/login">
+            <Login />
           </Route>
           <Route path="*">
             <ErrorBoundary />

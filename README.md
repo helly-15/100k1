@@ -21,6 +21,9 @@ for running tests
 6. i18next for translation
 7. Redux Saga
 8. Framer-motion animation
+9. Redux persist
+10. Firebase
+11. Ant design
 
 ## Store info 
 1) choose provider in dev tools tab 'components'

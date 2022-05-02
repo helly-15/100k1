@@ -19,6 +19,8 @@ interface IMainNavbarProps {
   setLocale: (locale: string) => void;
 }
 
+const MotionLink = motion(Link);
+
 export const MainNavbarComponent: React.FC<IMainNavbarProps> = ({
   setLocale,
 }) => {
@@ -72,12 +74,13 @@ export const MainNavbarComponent: React.FC<IMainNavbarProps> = ({
             ))}
           </ul>
         </li>
-        <motion.li
+        <MotionLink
+            to="/login"
           whileHover={{ scale: 1.2 }}
           className={`${classnameRoot}__personal-settings_login`}
         >
           {t("login")}
-        </motion.li>
+        </MotionLink>
         <motion.li
           whileHover={{ scale: 1.2 }}
           className={`${classnameRoot}__personal-settings_sign`}
