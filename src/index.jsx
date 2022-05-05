@@ -9,6 +9,7 @@ import { store, persistor } from "./redux-state/store/store";
 import { Main } from "./main-page/screen/main/Main";
 import "./localization/i18n";
 import {FallbackLoading} from "./100k1-game/modals/fallback-loading/FallbackLoading";
+import './api/firebase/firebaseApi';
 
 ReactDOM.render(
   <React.StrictMode>
