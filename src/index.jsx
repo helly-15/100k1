@@ -10,7 +10,6 @@ import { Main } from "./main-page/screen/main/Main";
 import "./localization/i18n";
 import {FallbackLoading} from "./100k1-game/modals/fallback-loading/FallbackLoading";
 
-
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>

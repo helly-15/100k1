@@ -1,6 +1,21 @@
+@import "../../../css/Palette";
+
 .login {
   display: flex;
-  &__image {
-    max-width: 50%;
+
+  label {
+    color: $textcolor!important;
   }
+  &__image {
+    flex: 2;
+  }
+  &__form_wrapper {
+    flex: 1;
+    margin: 50px;
+
+  }
+  &__password span{
+    box-sizing: border-box;
+  }
+
 }

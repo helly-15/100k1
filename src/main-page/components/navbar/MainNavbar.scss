@@ -70,5 +70,9 @@
       color: $textcolor;
       padding: 10px 5px;
     }
+    &_login {
+      text-decoration: none;
+      color: $textcolor;
+    }
   }
 }
