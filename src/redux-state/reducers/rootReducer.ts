@@ -4,6 +4,7 @@ import { scoreReducer } from "./scoreReducer";
 import { gameTitlesReducer } from "./gameTitlesReducer";
 import { localeReducer } from "./localeReducer";
 import {guessMelodyScoreReducer} from "./guessMelodyScoreReducer";
+import {userReducer} from "./userReducer";
 
 export const rootReducer = combineReducers({
   questionsData: questionsReducer,
@@ -11,4 +12,5 @@ export const rootReducer = combineReducers({
   gameTitles: gameTitlesReducer,
   locale: localeReducer,
   guessMelodyScore: guessMelodyScoreReducer,
+  user:userReducer,
 });

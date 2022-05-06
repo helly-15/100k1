@@ -1,6 +1,7 @@
-mport { initializeApp } from "firebase/app";
+import { initializeApp } from "firebase/app";
+
 const firebaseConfig = {
-    apiKey: process.env.REACT_APP_FIREBASE_apiKey,
+    apiKey: process.env.REACT_APP_FIREBASE_APIKEY,
     authDomain: process.env.REACT_APP_FIREBASE_authDomain,
     projectId: process.env.REACT_APP_FIREBASE_projectId,
     storageBucket: process.env.REACT_APP_FIREBASE_storageBucket,
@@ -8,4 +9,5 @@ const firebaseConfig = {
     appId: process.env.REACT_APP_FIREBASE_appId,
     measurementId: process.env.REACT_APP_FIREBASE_measurementId,
 };
-const app = initializeApp(firebaseConfig);
+
+initializeApp(firebaseConfig);
