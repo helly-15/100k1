@@ -5,12 +5,10 @@ import './Login.scss';
 import { Form, Input, Button} from 'antd';
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import {useDispatch} from "react-redux";
+import { useHistory} from "react-router-dom";
 import login from "../../../animation/login/login.json";
 import "antd/lib/form/style/index.css";
-import "antd/lib/form/style/index-pure.less";
 import "antd/lib/input/style/index.css";
-import "antd/lib/input/style/index-pure.less";
-import "antd/lib/style/index-pure.less";
 import "antd/lib/button/style/index.css";
 import {CHANGE_USER_INFO} from "../../../redux-state/reducers/userReducer";
 
@@ -19,18 +17,23 @@ const classnameRoot = "login";
 export const Login = () => {
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
-    const dispatch = useDispatch()
+    const [username, setUsername] = useState('');
+    const dispatch = useDispatch();
+    const history = useHistory();
     const handleLogin=()=>{
         const auth = getAuth();
         createUserWithEmailAndPassword(auth, email, pass)
             .then((userCredential) => {
                 const {user} = userCredential;
                    dispatch({ type: CHANGE_USER_INFO, payload: {
+                           username,
                         email: user.email,
                         uid: user.uid,
                         // @ts-ignore
                         token: user.accessToken,
+
                     } })
+               history.push('/')
             })
             // .catch((error) => {
             //     const errorCode = error.code;
@@ -56,6 +59,13 @@ export const Login = () => {
                 initialValues={{remember: true}}
                 autoComplete="off"
             >
+                <Form.Item
+                    label="Username"
+                    name="username"
+                    rules={[{ required: true, message: 'Please input your name'}]}
+                >
+                    <Input onChange={(e)=>setUsername(e.target.value)}/>
+                </Form.Item>
                 <Form.Item
                     label="Email"
                     name="email"

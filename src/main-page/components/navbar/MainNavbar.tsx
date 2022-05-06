@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { motion } from "framer-motion";
 import { CHANGE_LOCALE } from "../../../redux-state/reducers/localeReducer";
+import {IStoreState} from "../../../redux-state/interfaces/IStore";
 
 const classnameRoot = "main-navbar";
 
@@ -17,12 +18,13 @@ const lngs: Lngs = {
 
 interface IMainNavbarProps {
   setLocale: (locale: string) => void;
+  username: string;
 }
 
 const MotionLink = motion(Link);
 
 export const MainNavbarComponent: React.FC<IMainNavbarProps> = ({
-  setLocale,
+  setLocale, username
 }) => {
   const { t, i18n } = useTranslation();
   return (
@@ -74,26 +76,37 @@ export const MainNavbarComponent: React.FC<IMainNavbarProps> = ({
             ))}
           </ul>
         </li>
-        <MotionLink
-            to="/login"
-          whileHover={{ scale: 1.2 }}
-          className={`${classnameRoot}__personal-settings_login`}
-        >
-          {t("login")}
-        </MotionLink>
-        <motion.li
-          whileHover={{ scale: 1.2 }}
-          className={`${classnameRoot}__personal-settings_sign`}
-        >
-          {t("signup")}
-        </motion.li>
+          { (username && username.length > 1) ? <span>
+              {`Hi ${username}!`}
+          </span> :
+              <>
+                  <MotionLink
+                      to="/login"
+                      whileHover={{ scale: 1.2 }}
+                      className={`${classnameRoot}__personal-settings_login`}
+                  >
+                      {t("login")}
+                  </MotionLink>
+                  <motion.li
+                      whileHover={{ scale: 1.2 }}
+                      className={`${classnameRoot}__personal-settings_sign`}
+                  >
+                      {t("signup")}
+                  </motion.li>
+              </>
+
+
+          }
+
       </ul>
     </header>
   );
 };
 
 export const MainNavbar = connect(
-  () => ({}),
+  (state: IStoreState) => ({
+      username: state.user.username
+  }),
   (dispatch) => ({
     setLocale: (locale: string) => {
       dispatch({ type: CHANGE_LOCALE, payload: locale });

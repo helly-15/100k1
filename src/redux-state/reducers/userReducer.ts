@@ -7,6 +7,7 @@ export function userReducer(
         email: '',
         uid: '',
         token: '',
+        username:'',
     },
     action: { type: string; payload: IUser }
 ) {
@@ -17,6 +18,7 @@ export function userReducer(
                 email: action.payload.email,
                 uid: action.payload.uid,
                 token: action.payload.token,
+                username: action.payload.username,
             };
 
         default:
